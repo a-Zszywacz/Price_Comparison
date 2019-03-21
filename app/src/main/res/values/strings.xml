@@ -1,4 +1,16 @@
 <resources>
-    <string name="app_name">Price_Comparison</string>
+    <string name="app_name">Price Comparison</string>
     <string name="action_settings">Settings</string>
+
+    <!--MainActivity-->
+    <string name="main_btn1">Skaner</string>
+    <string name="main_btn2">Baza danych</string>
+    <string name="main_toolbar_name">@string/app_name</string>
+
+    <!--Database-->
+    <string name="database_toolbar_name">Baza danych</string>
+
+    <!--Scanner-->
+    <string name="scanner_toolbar_name">Skaner</string>
+
 </resources>
