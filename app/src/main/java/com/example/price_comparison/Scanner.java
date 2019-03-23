@@ -1,21 +1,95 @@
 package com.example.price_comparison;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
+
 public class Scanner extends AppCompatActivity {
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private ArrayList<String> resultCodes;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scanner);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        "Try to scan bardcode",
+                        Toast.LENGTH_SHORT).show();
+                scanBarcode(view);
+            }
+        });
+
+        update();
+
+    }
+    public void update(){
+        if( resultCodes == null){
+            resultCodes = new ArrayList<>();
+            ListView listView = findViewById(R.id.list);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
+            listView.setAdapter(arrayAdapter);
+           /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+               @Override
+               public void onItemClick( AdapterView<?> parent, View view, int position, long id){
+                   if(position==0){
+                       //Intent myIntent = new Intent(view.getContext(), );
+                   }
+               }
+            });*/
+        }
+        else {
+            ListView listView = findViewById(R.id.list);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
+            listView.setAdapter(arrayAdapter);
+        }
+    }
+
+    /*@Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putStringArrayList("resultCodes", resultCodes);
+    }*/
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList("resultCodes", resultCodes);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        resultCodes = savedInstanceState.getStringArrayList("resultCodes");
+        update();
+    }
 
     public void scanBarcode(View view) {
         IntentIntegrator integrator = new IntentIntegrator(this);
@@ -37,31 +111,20 @@ public class Scanner extends AppCompatActivity {
             } else {
                 Log.d("Scanner", "Scanned");
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
+                if( resultCodes == null) {
+                    resultCodes = new ArrayList<>();
+                    resultCodes.add(result.getContents());
+                    update();
+                }
+                else {
+                    resultCodes.add(result.getContents());
+                    update();
+                }
+                //list();
             }
         }
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scanner);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        "Try to scan bardcode",
-                        Toast.LENGTH_SHORT).show();
-                scanBarcode(view);
-
-
-            }
-        });
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
