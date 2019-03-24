@@ -89,11 +89,20 @@ public class Scanner extends AppCompatActivity {
         txtMessage.setTextColor(Color.parseColor("#ff2222"));
         final EditText editText = (EditText) dialog.findViewById(R.id.txtinput);
         editText.setText(barCode);
-        Button bt= (Button) dialog.findViewById(R.id.btdone);
-        bt.setOnClickListener(new View.OnClickListener() {
+        Button btnDone= (Button) dialog.findViewById(R.id.btdone);
+        btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resultCodes.set(index, editText.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+        });
+        Button btnDelete= (Button) dialog.findViewById(R.id.btdelete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultCodes.remove(index);
                 arrayAdapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
@@ -171,9 +180,11 @@ public class Scanner extends AppCompatActivity {
                 //Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //startActivityForResult(intentCamera, REQUEST_IMAGE_CAPTURE);
                 break;
-            case R.id.action_settings:Toast.makeText(getApplicationContext(),
+            case R.id.scanner_menu_opt1:Toast.makeText(getApplicationContext(),
                     "Kliknięto przycisk Obiekt2",
                     Toast.LENGTH_SHORT).show();
+                resultCodes.clear();
+                arrayAdapter.notifyDataSetChanged();
                 break;
         }
 

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Price Comparison</string>
-    <string name="action_settings">Settings</string>
+
 
     <!--MainActivity-->
     <string name="main_btn1">Skaner</string>
@@ -14,5 +14,8 @@
     <string name="scanner_toolbar_name">Skaner</string>
     <!--Scanner Edit List Item-->
     <string name="scanner_edit_item_toolbar_name">Edycja Itemu</string>
+    <!--Scaner Menu-->
+    <string name="scanner_menu_opt1">Wyczyść listę</string>
+    <string name="scanner_menu_opt2">Opcja nr2</string>
 
 </resources>

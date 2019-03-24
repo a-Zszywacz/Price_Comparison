@@ -6,24 +6,15 @@
         android:checkableBehavior="none"
         android:orderInCategory="100">
         <item
-            android:id="@+id/action_settings"
+            android:id="@+id/scanner_menu_opt1"
             android:orderInCategory="101"
-            android:title="@string/action_settings"
+            android:title="@string/scanner_menu_opt1"
             app:showAsAction="never" />
         <item
             android:id="@+id/action_settings2"
             android:orderInCategory="101"
-            android:title="@string/action_settings"
+            android:title="@string/scanner_menu_opt2"
             app:showAsAction="never" />
-        <item
-            android:id="@+id/action_settings3"
-            android:orderInCategory="101"
-            android:title="@string/action_settings"
-            app:showAsAction="never" />
-        <item
-            android:id="@+id/action_settings4"
-            android:orderInCategory="101"
-            android:title="@string/action_settings"
-            app:showAsAction="never" />
+
     </group>
 </menu>
