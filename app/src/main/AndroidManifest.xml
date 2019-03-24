@@ -13,12 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Database"
-            android:label="@string/database_toolbar_name"
+        <activity
+            android:name=".ScannerEditListItem"
+            android:label="@string/scanner_edit_item_toolbar_name"
             />
-        <activity android:name=".Scanner"
-            android:label="@string/scanner_toolbar_name"
-            />
+        <activity
+            android:name=".Database"
+            android:label="@string/database_toolbar_name" />
+        <activity
+            android:name=".Scanner"
+            android:label="@string/scanner_toolbar_name" />
         <activity
             android:name=".MainActivity"
             android:label="@string/main_toolbar_name"

@@ -1,8 +1,10 @@
 package com.example.price_comparison;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +17,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -28,6 +34,7 @@ public class Scanner extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ArrayList<String> resultCodes;
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,29 +61,49 @@ public class Scanner extends AppCompatActivity {
         if( resultCodes == null){
             resultCodes = new ArrayList<>();
             ListView listView = findViewById(R.id.list);
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
+            arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
             listView.setAdapter(arrayAdapter);
-           /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                @Override
-               public void onItemClick( AdapterView<?> parent, View view, int position, long id){
+               public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                    if(position==0){
-                       //Intent myIntent = new Intent(view.getContext(), );
+                        //createIntentForItem(view);
+                       createDialogForItem(resultCodes.get(position),position);
                    }
                }
-            });*/
+            });
         }
         else {
             ListView listView = findViewById(R.id.list);
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
+            arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
             listView.setAdapter(arrayAdapter);
         }
     }
 
-    /*@Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        outState.putStringArrayList("resultCodes", resultCodes);
-    }*/
+    public void createDialogForItem(String barCode, final int index){
+        final Dialog dialog = new Dialog(Scanner.this);
+        dialog.setTitle("Edycja Itemu:");
+        dialog.setContentView(R.layout.scanner_dialog_box);
+        TextView txtMessage = (TextView)dialog.findViewById(R.id.txtmessage);
+        txtMessage.setText("Update item");
+        txtMessage.setTextColor(Color.parseColor("#ff2222"));
+        final EditText editText = (EditText) dialog.findViewById(R.id.txtinput);
+        editText.setText(barCode);
+        Button bt= (Button) dialog.findViewById(R.id.btdone);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultCodes.set(index, editText.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+    public void createIntentForItem(View view){
+        Intent myIntent = new Intent(view.getContext(), ScannerEditListItem.class);
+        startActivityForResult(myIntent,0);
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

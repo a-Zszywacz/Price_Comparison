@@ -12,5 +12,7 @@
 
     <!--Scanner-->
     <string name="scanner_toolbar_name">Skaner</string>
+    <!--Scanner Edit List Item-->
+    <string name="scanner_edit_item_toolbar_name">Edycja Itemu</string>
 
 </resources>
