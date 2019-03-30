@@ -1,22 +1,17 @@
 package com.example.price_comparison;
 
 import android.app.Dialog;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
-import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,6 +30,11 @@ public class Scanner extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ArrayList<String> resultCodes;
     private ArrayAdapter<String> arrayAdapter;
+    boolean isShowingDialog = false; //Dialog box flag
+    private String barCodee;
+    private int indexx;
+    private Dialog dialog;
+    private EditText dialogEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +54,20 @@ public class Scanner extends AppCompatActivity {
             }
         });
 
-        update();
+        updateListItems();
 
     }
-    public void update(){
+
+
+    //Update for List items
+    public void updateListItems(){
         if( resultCodes == null){
             resultCodes = new ArrayList<>();
+            resultCodes.add("3424324324"); //usunać WAŻNE!
             ListView listView = findViewById(R.id.list);
             arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
             listView.setAdapter(arrayAdapter);
+            //Set clickable items in list -> click should show dialog bar for change name, code number, and other informations
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id){
@@ -81,20 +86,33 @@ public class Scanner extends AppCompatActivity {
     }
 
     public void createDialogForItem(String barCode, final int index){
-        final Dialog dialog = new Dialog(Scanner.this);
+        barCodee= barCode;
+        indexx= index;
+        dialog = new Dialog(Scanner.this);
         dialog.setTitle("Edycja Itemu:");
         dialog.setContentView(R.layout.scanner_dialog_box);
+        //dialog.setCanceledOnTouchOutside(false);
         TextView txtMessage = (TextView)dialog.findViewById(R.id.txtmessage);
         txtMessage.setText("Update item");
         txtMessage.setTextColor(Color.parseColor("#ff2222"));
-        final EditText editText = (EditText) dialog.findViewById(R.id.txtinput);
-        editText.setText(barCode);
+        dialogEditText = (EditText) dialog.findViewById(R.id.txtinput);
+        dialogEditText.setText(barCode);
+        dialogEditText.setSelection(dialogEditText.getText().length());//sets cursor to end of editText
+        onSaveInstanceState(dialog.onSaveInstanceState());
         Button btnDone= (Button) dialog.findViewById(R.id.btdone);
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resultCodes.set(index, editText.getText().toString());
+                resultCodes.set(index, dialogEditText.getText().toString());
                 arrayAdapter.notifyDataSetChanged();
+                isShowingDialog = false;
+                dialog.dismiss();
+            }
+        });
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                isShowingDialog= false;
                 dialog.dismiss();
             }
         });
@@ -104,10 +122,13 @@ public class Scanner extends AppCompatActivity {
             public void onClick(View v) {
                 resultCodes.remove(index);
                 arrayAdapter.notifyDataSetChanged();
+                isShowingDialog = false;
                 dialog.dismiss();
             }
         });
+        isShowingDialog = true;
         dialog.show();
+
     }
     public void createIntentForItem(View view){
         Intent myIntent = new Intent(view.getContext(), ScannerEditListItem.class);
@@ -115,16 +136,45 @@ public class Scanner extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putStringArrayList("resultCodes", resultCodes);
+    protected void onPause() {
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+        super.onPause();
     }
 
+    //Saves screen before rotate
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putStringArrayList("resultCodes", resultCodes);
+        outState.putBoolean("IS_SHOWING_DIALOG", isShowingDialog);
+        if(isShowingDialog){
+            barCodee = dialogEditText.getText().toString();
+        }
+        outState.putString("barcodee", barCodee);
+        outState.putInt("indexx", indexx);
+        super.onSaveInstanceState(outState);
+        //outState.
+    }
+    private void onSaveDialogState(Bundle outState){
+
+    }
+
+    //Reload screen after rotate
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         resultCodes = savedInstanceState.getStringArrayList("resultCodes");
-        update();
+
+        if(savedInstanceState!=null){
+            isShowingDialog = savedInstanceState.getBoolean("IS_SHOWING_DIALOG", false);
+            if(isShowingDialog){
+                barCodee = savedInstanceState.getString("barcodee");
+                indexx = savedInstanceState.getInt("indexx");
+                createDialogForItem(barCodee, indexx);
+            }
+        }
+        updateListItems();
     }
 
     public void scanBarcode(View view) {
@@ -151,11 +201,11 @@ public class Scanner extends AppCompatActivity {
                 if( resultCodes == null) {
                     resultCodes = new ArrayList<>();
                     resultCodes.add(result.getContents());
-                    update();
+                    updateListItems();
                 }
                 else {
                     resultCodes.add(result.getContents());
-                    update();
+                    updateListItems();
                 }
                 //list();
             }
@@ -180,11 +230,10 @@ public class Scanner extends AppCompatActivity {
                 //Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //startActivityForResult(intentCamera, REQUEST_IMAGE_CAPTURE);
                 break;
-            case R.id.scanner_menu_opt1:Toast.makeText(getApplicationContext(),
-                    "Kliknięto przycisk Obiekt2",
-                    Toast.LENGTH_SHORT).show();
+            case R.id.scanner_menu_opt1:
                 resultCodes.clear();
                 arrayAdapter.notifyDataSetChanged();
+                Toast.makeText(getApplicationContext(),"Lista wyczyszczona", Toast.LENGTH_SHORT).show();
                 break;
         }
 
