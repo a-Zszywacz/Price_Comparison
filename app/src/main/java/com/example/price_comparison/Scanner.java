@@ -31,10 +31,17 @@ public class Scanner extends AppCompatActivity {
     private ArrayList<String> resultCodes;
     private ArrayAdapter<String> arrayAdapter;
     boolean isShowingDialog = false; //Dialog box flag
-    private String barCodee;
-    private int indexx;
+    ArrayList<Product> products = new ArrayList<>();
+
+    //DialogBox
     private Dialog dialog;
+    private int indexx;
+    private String barCodee;
     private EditText dialogEditText;
+    private EditText dialogEditText2;
+    private EditText dialogEditText3;
+    private EditText dialogEditText4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +71,7 @@ public class Scanner extends AppCompatActivity {
         if( resultCodes == null){
             resultCodes = new ArrayList<>();
             resultCodes.add("3424324324"); //usunać WAŻNE!
+            products.add(new Product("3424324324", "", 0.0, ""));
             ListView listView = findViewById(R.id.list);
             arrayAdapter = new ArrayAdapter<>(this, R.layout.scanner_list, resultCodes);
             listView.setAdapter(arrayAdapter);
@@ -95,20 +103,27 @@ public class Scanner extends AppCompatActivity {
         TextView txtMessage = (TextView)dialog.findViewById(R.id.txtmessage);
         txtMessage.setText("Update item");
         txtMessage.setTextColor(Color.parseColor("#ff2222"));
+        //barcod
         dialogEditText = (EditText) dialog.findViewById(R.id.txtinput);
         dialogEditText.setText(barCode);
         dialogEditText.setSelection(dialogEditText.getText().length());//sets cursor to end of editText
+        //name
+        dialogEditText2 = (EditText) dialog.findViewById(R.id.txtinput2);
+        dialogEditText2.setText(products.get(index).getName());
+        dialogEditText2.setSelection(dialogEditText2.getText().length());//sets cursor to end of editText
+        //price
+        dialogEditText3 = (EditText) dialog.findViewById(R.id.txtinput3);
+        dialogEditText3.setText(products.get(index).getPrice().toString());
+        dialogEditText3.setSelection(dialogEditText3.getText().length());//sets cursor to end of editText
+        //store name
+        dialogEditText4 = (EditText) dialog.findViewById(R.id.txtinput4);
+        dialogEditText4.setText(products.get(index).getStoreName());
+        dialogEditText4.setSelection(dialogEditText4.getText().length());//sets cursor to end of editText
+
         onSaveInstanceState(dialog.onSaveInstanceState());
         Button btnDone= (Button) dialog.findViewById(R.id.btdone);
-        btnDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultCodes.set(index, dialogEditText.getText().toString());
-                arrayAdapter.notifyDataSetChanged();
-                isShowingDialog = false;
-                dialog.dismiss();
-            }
-        });
+
+        //Listener for background click/touch. When clicked background, flag isShowingDialog take false
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
@@ -116,11 +131,25 @@ public class Scanner extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+
+        //Listener for Done button
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultCodes.set(index, dialogEditText.getText().toString());
+                products.get(index).setAll(dialogEditText.getText().toString(), dialogEditText2.getText().toString(), Double.valueOf(dialogEditText3.getText().toString()), dialogEditText4.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
+                isShowingDialog = false;
+                dialog.dismiss();
+            }
+        });
+        //Listener for Delete button
         Button btnDelete= (Button) dialog.findViewById(R.id.btdelete);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resultCodes.remove(index);
+                products.remove(index);
                 arrayAdapter.notifyDataSetChanged();
                 isShowingDialog = false;
                 dialog.dismiss();
@@ -153,6 +182,9 @@ public class Scanner extends AppCompatActivity {
         }
         outState.putString("barcodee", barCodee);
         outState.putInt("indexx", indexx);
+
+        outState.putParcelableArrayList("products", products);
+
         super.onSaveInstanceState(outState);
         //outState.
     }
@@ -165,6 +197,7 @@ public class Scanner extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         resultCodes = savedInstanceState.getStringArrayList("resultCodes");
+        products = savedInstanceState.getParcelableArrayList("products");
 
         if(savedInstanceState!=null){
             isShowingDialog = savedInstanceState.getBoolean("IS_SHOWING_DIALOG", false);
@@ -201,10 +234,12 @@ public class Scanner extends AppCompatActivity {
                 if( resultCodes == null) {
                     resultCodes = new ArrayList<>();
                     resultCodes.add(result.getContents());
+                    products.add(new Product(result.getContents(), "", 0.00, ""));
                     updateListItems();
                 }
                 else {
                     resultCodes.add(result.getContents());
+                    products.add(new Product(result.getContents(), "", 0.00, ""));
                     updateListItems();
                 }
                 //list();
@@ -232,6 +267,7 @@ public class Scanner extends AppCompatActivity {
                 break;
             case R.id.scanner_menu_opt1:
                 resultCodes.clear();
+                products.clear();
                 arrayAdapter.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(),"Lista wyczyszczona", Toast.LENGTH_SHORT).show();
                 break;

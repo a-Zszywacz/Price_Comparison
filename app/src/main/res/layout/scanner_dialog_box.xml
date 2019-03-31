@@ -23,13 +23,36 @@
             android:orientation="vertical">
 
             <EditText
-                android:hint="BarCode"
+                android:hint="Kod kreskowy"
                 android:id="@+id/txtinput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0" />
 
+            <EditText
+                android:hint="Nazwa produktu"
+                android:id="@+id/txtinput2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0" />
+
+            <EditText
+                android:hint="Cena"
+                android:id="@+id/txtinput3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0" />
+
+            <EditText
+                android:hint="Nazwa Sklepu"
+                android:id="@+id/txtinput4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0" />
 
             <LinearLayout
                 android:layout_width="match_parent"
