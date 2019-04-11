@@ -14,10 +14,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ScannerEditListItem"
-            android:label="@string/scanner_edit_item_toolbar_name"
-            />
-        <activity
             android:name=".Database"
             android:label="@string/database_toolbar_name" />
         <activity

@@ -1,5 +1,6 @@
 package com.example.price_comparison;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,7 +28,6 @@ import java.util.ArrayList;
 
 public class Scanner extends AppCompatActivity {
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     private ArrayList<String> resultCodes;
     private ArrayAdapter<String> arrayAdapter;
     boolean isShowingDialog = false; //Dialog box flag
@@ -35,7 +35,7 @@ public class Scanner extends AppCompatActivity {
 
     //DialogBox
     private Dialog dialog;
-    private int indexx;
+    private int listIndex;
     private String barCodee;
     private EditText dialogEditText;
     private EditText dialogEditText2;
@@ -55,7 +55,7 @@ public class Scanner extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),
-                        "Try to scan bardcode",
+                        "Try to scan barcode",
                         Toast.LENGTH_SHORT).show();
                 scanBarcode(view);
             }
@@ -79,10 +79,9 @@ public class Scanner extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                   if(position==0){
-                        //createIntentForItem(view);
+                   //if(position==0){
                        createDialogForItem(resultCodes.get(position),position);
-                   }
+                   //}
                }
             });
         }
@@ -93,35 +92,35 @@ public class Scanner extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void createDialogForItem(String barCode, final int index){
         barCodee= barCode;
-        indexx= index;
+        this.listIndex= index;
         dialog = new Dialog(Scanner.this);
         dialog.setTitle("Edycja Itemu:");
         dialog.setContentView(R.layout.scanner_dialog_box);
-        //dialog.setCanceledOnTouchOutside(false);
-        TextView txtMessage = (TextView)dialog.findViewById(R.id.txtmessage);
+        TextView txtMessage = dialog.findViewById(R.id.txtmessage);
         txtMessage.setText("Update item");
         txtMessage.setTextColor(Color.parseColor("#ff2222"));
         //barcod
-        dialogEditText = (EditText) dialog.findViewById(R.id.txtinput);
+        dialogEditText = dialog.findViewById(R.id.txtinput);
         dialogEditText.setText(barCode);
         dialogEditText.setSelection(dialogEditText.getText().length());//sets cursor to end of editText
         //name
-        dialogEditText2 = (EditText) dialog.findViewById(R.id.txtinput2);
+        dialogEditText2 = dialog.findViewById(R.id.txtinput2);
         dialogEditText2.setText(products.get(index).getName());
         dialogEditText2.setSelection(dialogEditText2.getText().length());//sets cursor to end of editText
         //price
-        dialogEditText3 = (EditText) dialog.findViewById(R.id.txtinput3);
+        dialogEditText3 = dialog.findViewById(R.id.txtinput3);
         dialogEditText3.setText(products.get(index).getPrice().toString());
         dialogEditText3.setSelection(dialogEditText3.getText().length());//sets cursor to end of editText
         //store name
-        dialogEditText4 = (EditText) dialog.findViewById(R.id.txtinput4);
+        dialogEditText4 = dialog.findViewById(R.id.txtinput4);
         dialogEditText4.setText(products.get(index).getStoreName());
         dialogEditText4.setSelection(dialogEditText4.getText().length());//sets cursor to end of editText
 
         onSaveInstanceState(dialog.onSaveInstanceState());
-        Button btnDone= (Button) dialog.findViewById(R.id.btdone);
+        Button btnDone= dialog.findViewById(R.id.btdone);
 
         //Listener for background click/touch. When clicked background, flag isShowingDialog take false
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -144,7 +143,7 @@ public class Scanner extends AppCompatActivity {
             }
         });
         //Listener for Delete button
-        Button btnDelete= (Button) dialog.findViewById(R.id.btdelete);
+        Button btnDelete= dialog.findViewById(R.id.btdelete);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,11 +156,6 @@ public class Scanner extends AppCompatActivity {
         });
         isShowingDialog = true;
         dialog.show();
-
-    }
-    public void createIntentForItem(View view){
-        Intent myIntent = new Intent(view.getContext(), ScannerEditListItem.class);
-        startActivityForResult(myIntent,0);
     }
 
     @Override
@@ -181,15 +175,11 @@ public class Scanner extends AppCompatActivity {
             barCodee = dialogEditText.getText().toString();
         }
         outState.putString("barcodee", barCodee);
-        outState.putInt("indexx", indexx);
+        outState.putInt("listIndex", listIndex);
 
         outState.putParcelableArrayList("products", products);
 
         super.onSaveInstanceState(outState);
-        //outState.
-    }
-    private void onSaveDialogState(Bundle outState){
-
     }
 
     //Reload screen after rotate
@@ -199,13 +189,11 @@ public class Scanner extends AppCompatActivity {
         resultCodes = savedInstanceState.getStringArrayList("resultCodes");
         products = savedInstanceState.getParcelableArrayList("products");
 
-        if(savedInstanceState!=null){
-            isShowingDialog = savedInstanceState.getBoolean("IS_SHOWING_DIALOG", false);
-            if(isShowingDialog){
-                barCodee = savedInstanceState.getString("barcodee");
-                indexx = savedInstanceState.getInt("indexx");
-                createDialogForItem(barCodee, indexx);
-            }
+        isShowingDialog = savedInstanceState.getBoolean("IS_SHOWING_DIALOG", false);
+        if(isShowingDialog){
+            barCodee = savedInstanceState.getString("barcodee");
+            listIndex = savedInstanceState.getInt("listIndex");
+            createDialogForItem(barCodee, listIndex);
         }
         updateListItems();
     }
@@ -261,10 +249,6 @@ public class Scanner extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch(item.getItemId()){
-            case R.id.fab:
-                //Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                //startActivityForResult(intentCamera, REQUEST_IMAGE_CAPTURE);
-                break;
             case R.id.scanner_menu_opt1:
                 resultCodes.clear();
                 products.clear();
