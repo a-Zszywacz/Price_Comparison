@@ -26,4 +26,9 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "Kliknięto przycisk Login", Toast.LENGTH_SHORT).show();
     }
 
+    public void toFindCheapest(View view){
+        Intent intent = new Intent(this, FindCheapest.class);
+        startActivity(intent);
+    }
+
 }

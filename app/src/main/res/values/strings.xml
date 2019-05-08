@@ -5,6 +5,7 @@
     <!--MainActivity-->
     <string name="main_btn1">Skaner</string>
     <string name="main_btn2">Baza danych</string>
+    <string name="main_btn3">Znajdź najtaniej</string>
     <string name="main_toolbar_name">@string/app_name</string>
 
     <!--Database-->
