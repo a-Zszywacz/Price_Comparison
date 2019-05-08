@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">Price_Comparison</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Price Comparison</string>
+
+
+    <!--MainActivity-->
+    <string name="main_btn1">Skaner</string>
+    <string name="main_btn2">Baza danych</string>
+    <string name="main_toolbar_name">@string/app_name</string>
+
+    <!--Database-->
+    <string name="database_toolbar_name">Baza danych</string>
+
+    <!--Scanner-->
+    <string name="scanner_toolbar_name">Skaner</string>
+    <!--Scanner Edit List Item-->
+    <string name="scanner_edit_item_toolbar_name">Edycja Itemu</string>
+    <!--Scaner Menu-->
+    <string name="scanner_menu_opt1">Wyczyść listę</string>
+    <string name="scanner_menu_opt2">Opcja nr2</string>
+
 </resources>

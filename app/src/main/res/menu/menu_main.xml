@@ -1,10 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.price_comparison.MainActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+    tools:context="com.example.price_comparison.Scanner">
+    <group
+        android:checkableBehavior="none"
+        android:orderInCategory="100">
+        <item
+            android:id="@+id/scanner_menu_opt1"
+            android:orderInCategory="101"
+            android:title="@string/scanner_menu_opt1"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/action_settings2"
+            android:orderInCategory="101"
+            android:title="@string/scanner_menu_opt2"
+            app:showAsAction="never" />
+
+    </group>
 </menu>
