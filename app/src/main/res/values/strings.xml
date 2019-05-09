@@ -19,4 +19,8 @@
     <string name="scanner_menu_opt1">Wyczyść listę</string>
     <string name="scanner_menu_opt2">Opcja nr2</string>
 
+    <!--FindCheapest-->
+    <string name="find_cheapest_btn1">Zeskanuj kod kreskowy</string>
+    <string name="find_cheapest_toolbar_name">Znajdź najtaniej</string>
+
 </resources>

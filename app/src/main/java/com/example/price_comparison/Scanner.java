@@ -55,7 +55,7 @@ public class Scanner extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),
-                        "Try to scan barcode",
+                        "Zeskanuj kod kreskowy",
                         Toast.LENGTH_SHORT).show();
                 scanBarcode(view);
             }
