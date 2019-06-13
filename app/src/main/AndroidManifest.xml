@@ -8,51 +8,65 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/new_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/new_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-
-        <!--Vertical camera-->
-        <activity
-            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true"/>
-
-        <activity android:name=".FindCheapest"
+        <activity android:name=".ScannedProduct"
             android:label="@string/find_cheapest_toolbar_name"
             android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true"/>
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
         <activity
-            android:name=".Database"
-            android:label="@string/database_toolbar_name"
+            android:name=".UserMode"
             android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true"/>
+            android:stateNotNeeded="true"
+            android:theme="@style/UserTheme"
+            tools:replace="android:screenOrientation" />
         <activity
-            android:name=".Scanner"
-            android:label="@string/scanner_toolbar_name"
+            android:name=".SelectMode"
             android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true"/>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/main_toolbar_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true">
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Vertical camera -->
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
+        <activity
+            android:name=".FindCheapest"
+            android:label="@string/find_cheapest_toolbar_name"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
+        <activity
+            android:name=".Database"
+            android:label="@string/database_toolbar_name"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
+        <activity
+            android:name=".Scanner"
+            android:label="@string/scanner_toolbar_name"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
+        <activity
+            android:name=".GodMode"
+            android:label="@string/main_toolbar_name"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:replace="android:screenOrientation" />
     </application>
 
 </manifest>

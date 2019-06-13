@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Price Comparison</string>
 
+    <!--SelectMode-->
+    <string name="selectmode_btn1">God Mode</string>
+    <string name="selectmode_btn2">User Mode</string>
 
-    <!--MainActivity-->
+    <!--GodMode-->
     <string name="main_btn1">Skaner</string>
     <string name="main_btn2">Baza danych</string>
     <string name="main_btn3">Znajdź najtaniej</string>
-    <string name="main_toolbar_name">@string/app_name</string>
+    <string name="main_toolbar_name">GodMode</string>
 
     <!--Database-->
     <string name="database_toolbar_name">Baza danych</string>
@@ -22,5 +25,13 @@
     <!--FindCheapest-->
     <string name="find_cheapest_btn1">Zeskanuj kod kreskowy</string>
     <string name="find_cheapest_toolbar_name">Znajdź najtaniej</string>
+
+    <!--User Mode-->
+    <string name="user_mode_text1">Największa porównywarka \n cen sklepowych</string>
+    <string name="user_mode_text2">Zeskanuj kod kreskowy</string>
+
+    <!--Scanned Product-->
+    <string name="scanned_product_toolbar">Skanuj produkty</string>
+
 
 </resources>
