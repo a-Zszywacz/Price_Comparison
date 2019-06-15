@@ -15,23 +15,43 @@ import com.example.price_comparison.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasa stworzona w celu wyświetlenia listy sklepów.
+ */
 public class StoreList extends ArrayAdapter<SingleStore> {
 
-    private ArrayList<SingleStore> dataSet;
-    Context mContext;
+    private ArrayList<SingleStore> dataSet; /**< Lista  danych*/
+    Context mContext; /**< Kontekst */
 
+    /**
+     * Klasa stworzona w celu podtrzymania widoku.
+     * /static
+     */
     private static class ViewHolder {
-        TextView storeName;
-        TextView storePrice;
-        ImageView info;
+        TextView storeName; /**< Nazwa sklepu w postaci tekstu */
+        TextView storePrice; /**< Cena w sklepie w postaci tekstu */
+        ImageView info; /**< Informacje w postaci obrazka*/
     }
 
+    /**
+     * /brief Konstruktor parametryczny, tworzący listę sklepów na podstawie danych, oraz kontekstu.
+     * Konstruktor parametryczny, tworzący listę sklepów na podstawie danych, oraz kontekstu.
+     * @param data dane
+     * @param context kontekst
+     */
     public StoreList(ArrayList<SingleStore> data, Context context){
         super(context, R.layout.store_list, data);
         this.dataSet = data;
         this.mContext=context;
     }
 
+    /**
+     * Metoda zwracająca widok, na którym wyświetlone zostaną informacje takie jak nazwa, cena, info.
+     * @param position pozycja
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position

@@ -37,7 +37,7 @@ public class ApiController {
 
 
     /**
-     * Klasa służąca do pobierania danych z bazy danych
+     * Klasa służąca do pobierania danych z bazy danych w postaci JSON.
      */
     public class GetDataSync extends AsyncTask<Void, Void, Void> {
 
@@ -69,6 +69,13 @@ public class ApiController {
         return sb.toString();
     }
 
+    /**
+     * Metoda służąca do odczytu JSON z adresu URL.
+     * @param url adres URL
+     * @return JSON
+     * @throws IOException
+     * @throws JSONException
+     */
     public JSONArray readJsonFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
         try {
@@ -81,6 +88,13 @@ public class ApiController {
         }
     }
 
+    /**
+     * Metoda służąca do odczytu obiektu JSON z adresu URL.
+     * @param url adres URL
+     * @return JSON
+     * @throws IOException
+     * @throws JSONException
+     */
     public JSONObject readJsonObjectFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
         try {
@@ -93,7 +107,13 @@ public class ApiController {
         }
     }
 
-
+    /**
+     * /brief Metoda typu GET. Zwraca listę wszystkich produktów.
+     * Metoda typu GET. Zwraca listę wszystkich produktów. Zwracane pola: Id, Nazwa, Kod producenta.
+     * @return lista wszystkich produktów
+     * @throws IOException
+     * @throws JSONException
+     */
     public ArrayList<Product> getAllProducts() throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.productUrl+"&GetAllProducts");
 
@@ -108,6 +128,13 @@ public class ApiController {
         return products;
     }
 
+    /**
+     * /brief Metoda typu GET. Zwraca listę wszystkich sklepów.
+     * Metoda typu GET. Zwraca listę wszystkich sklepów. Zwracane pola: Id, nazwa sklepu, miasto, kod pocztowy, ulica.
+     * @return lista wszystkich sklepów
+     * @throws IOException
+     * @throws JSONException
+     */
     public ArrayList<ConcreteStore> getAllStores() throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.storeUrl+"&GetAllStores");
 
@@ -127,6 +154,14 @@ public class ApiController {
         return stores;
     }
 
+    /**
+     * /brief Metoda zwraca produkt na podstawie kodu producenta.
+     * Metoda zwraca produkt na podstawie kodu producenta. Zwracane pola: Id, nazwa, kod producenta
+     * @param producerCode Kod producenta
+     * @return Produkt
+     * @throws IOException
+     * @throws JSONException
+     */
     public  Product getProductByProducerCode(String producerCode) throws IOException, JSONException {
         JSONObject jsonObj = this.readJsonObjectFromUrl(this.productUrl+"&ProductByProducerCode="+producerCode);
         Product p = null;
@@ -134,6 +169,14 @@ public class ApiController {
         return p;
     }
 
+    /**
+     * /brief Metoda na podstawie kodu producenta zwraca sklep, w którym znajduje się produkt.
+     * Metoda na podstawie kodu producenta zwraca sklep, w którym znajduje się produkt. Zwracane pola: id, nazwa sklepu, miasto, kod pocztowy, ulica.
+     * @param producerCode
+     * @return Sklep
+     * @throws IOException
+     * @throws JSONException
+     */
     public ArrayList<ConcreteStore> getStoresByProducerCode(String producerCode) throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.storeUrl+"&StoreByProducerCode="+producerCode);
 
@@ -156,6 +199,14 @@ public class ApiController {
         return stores;
     }
 
+    /**
+     * /brief Metoda zwraca produkt w danym sklepie, na podstawie ID sklepu.
+     * Metoda zwraca produkt w danym sklepie, na podstawie ID sklepu. Zwracane pola: Id, nazwa produktu, kod producenta, waluta, cena, data promocji od, data promocji do.
+     * @param id
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public ArrayList<ProductInStore> getConreteProductsByStoreID(int id) throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.productUrl+"&GetProductsByStoreID="+Integer.toString(id));
 
