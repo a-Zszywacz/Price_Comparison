@@ -38,6 +38,7 @@ public class FindCheapest extends AppCompatActivity {
 
     ApiController api = new ApiController(); /**< Obiekt kontrolera bazy danych */
     /**
+     * /brief Metoda uruchamiana przy starcie obecnego activity.
      * Metoda uruchamiana przy starcie obecnego activity.
      * @param savedInstanceState zapisane stan instancji
      */
@@ -58,6 +59,7 @@ public class FindCheapest extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             /**
+             * /brief Metoda uruchamiana po kliknięciu w przycisk.
              * Metoda uruchamiana po kliknięciu w przycisk.
              * @param v widok
              */
@@ -73,6 +75,7 @@ public class FindCheapest extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda uruchamia skaner.
      * Metoda uruchamia skaner.
      * @param view widok
      */
@@ -88,6 +91,7 @@ public class FindCheapest extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda uruchamiana po zeskanowaniu kodu kreskowego.
      * Metoda uruchamiana po zeskanowaniu kodu kreskowego.
      * @param RequestCode kod żądania
      * @param ResultCode kod wynikowy
@@ -125,6 +129,7 @@ public class FindCheapest extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda służąca do wyświetlenia szczegółów produktu.
      * Metoda służąca do wyświetlenia szczegółów produktu.
      * @param product paczka z produktem
      * @throws IOException
@@ -175,6 +180,7 @@ public class FindCheapest extends AppCompatActivity {
         arrayAdapter2 = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, text2){
 
             /**
+             * /brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
              * Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
              * @param position pozycja
              * @param convertView stary widok, który można ponownie użyć

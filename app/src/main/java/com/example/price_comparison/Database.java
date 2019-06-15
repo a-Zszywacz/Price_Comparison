@@ -35,9 +35,14 @@ public class Database extends AppCompatActivity {
 
     private ArrayAdapter<String> arrayAdapter;
     private ArrayAdapter<String[]> arrayAdapter2;
-    private ApiController apiController = new ApiController();
-    private Spinner dropdown;
+    private ApiController apiController = new ApiController();  /**< Obiekt kontrolera bazy danych */
+    private Spinner dropdown; /**< Służy do zarządzania listą rozwijaną */
 
+    /**
+     * /brief Metoda uruchamiana przy starcie obecnego activity.
+     * Metoda uruchamiana przy starcie obecnego activity.
+     * @param savedInstanceState zapisane stan instancji
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +64,24 @@ public class Database extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * /brief Metoda uruchamiana przy starcie obecnego activity.
+             * Metoda uruchamiana przy starcie obecnego activity.
+             * @param parent rodzic
+             * @param view widok
+             * @param position pozycja
+             * @param id indeks
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 dropdownSelectedItem(position);
             }
 
+            /**
+             * /brief Metoda uruchamiana, jeśli nie został wybrany żaden atrybut
+             * Metoda uruchamiana, jeśli nie został wybrany żaden atrybut
+             * @param parent
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -74,6 +92,11 @@ public class Database extends AppCompatActivity {
 
     }
 
+    /**
+     * /brief Metoda rozwija listę wybranego atrybutu.
+     * Metoda rozwija listę wybranego atrybutu.
+     * @param position pozycja
+     */
     private void dropdownSelectedItem(int position){
         ArrayList<String> text = new ArrayList<>();
         final ArrayList<String[]> text2 = new ArrayList<>();
@@ -98,7 +121,14 @@ public class Database extends AppCompatActivity {
 
                 arrayAdapter2 = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, text2){
 
-
+                    /**
+                     * /brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+                     * Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+                     * @param position pozycja
+                     * @param convertView stary widok, który można ponownie użyć
+                     * @param parent Rodyic, do którego ten widok zostanie dołączony
+                     * @return widok
+                     */
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
@@ -135,7 +165,14 @@ public class Database extends AppCompatActivity {
 
                 arrayAdapter2 = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, text2){
 
-
+                    /**
+                     * /brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+                     * Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+                     * @param position pozycja
+                     * @param convertView stary widok, który można ponownie użyć
+                     * @param parent Rodyic, do którego ten widok zostanie dołączony
+                     * @return widok
+                     */
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);

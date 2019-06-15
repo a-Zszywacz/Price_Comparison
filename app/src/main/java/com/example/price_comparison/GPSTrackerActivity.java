@@ -20,6 +20,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     Location mLastLocation; /**< Ostatnia uzyskana lokalizacja */
 
     /**
+     * /brief Metoda uruchamiana przy starcie obecnego activity.
      * Metoda uruchamiana przy starcie obecnego activity.
      * @param savedInstanceState zapisane stan instancji
      */
@@ -37,6 +38,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
+     * /brief Metoda łączy się z klientem Google Api.
      * Metoda łączy się z klientem Google Api.
      */
     protected void onStart() {
@@ -45,6 +47,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
+     * /brief Metoda rozłącza się z klientem Google Api.
      * Metoda rozłącza się z klientem Google Api.
      */
     protected void onStop() {
@@ -53,6 +56,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
+     * /brief Metoda wywoływana, jeśli zrealizowane zostało połączenie.
      * Metoda wywoływana, jeśli zrealizowane zostało połączenie.
      * @param bundle
      */
@@ -77,6 +81,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
+     * /brief Metoda wywoływana, jeśli połączenie zostanie zawieszone.
      * Metoda wywoływana, jeśli połączenie zostanie zawieszone.
      * @param i
      */
@@ -86,6 +91,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
+     * /brief Metoda wywoływana, jeśli nie uda się połączyć.
      * Metoda wywoływana, jeśli nie uda się połączyć.
      * @param connectionResult
      */

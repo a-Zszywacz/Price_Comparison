@@ -53,6 +53,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     private LocationRequest mLocationRequest;
 
     /**
+     * /brief Metoda uruchamiana przy starcie obecnego Acrivity.
      * Metoda uruchamiana przy starcie obecnego Acrivity.
      * @param savedInstanceState zapisany stan instancji
      */
@@ -92,6 +93,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
+     * /brief Metoda, która powinna wyświetlić lokalizacje na mapie Google.
      * Metoda, która powinna wyświetlić lokalizacje na mapie Google.
      * @param view widok
      */
@@ -109,6 +111,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
+     * /brief Metoda uruchamiana na zakończenie obecnego activity.
      * Metoda uruchamiana na zakończenie obecnego activity.
      * @param RequestCode kod żądania
      * @param ResultCode kod wynikowy
@@ -153,6 +156,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
+     * /brief Metoda wykonuje akcje, jeśli połączono.
      * Metoda wykonuje akcje, jeśli połączono.
      * @param bundle
      */
@@ -162,7 +166,8 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * Metoda wykonuje akcje, jeśli połączenie zostało zawieszone,4.
+     * /brief Metoda wykonuje akcje, jeśli połączenie zostało zawieszone.
+     * Metoda wykonuje akcje, jeśli połączenie zostało zawieszone.
      * @param i
      */
     @Override
@@ -171,6 +176,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
+     * /brief Metoda wykonuje akcje, jeśli próba połączenia się nie powiedzie.
      * Metoda wykonuje akcje, jeśli próba połączenia się nie powiedzie.
      * @param connectionResult
      */
@@ -180,6 +186,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
+     * /brief Metoda wykonuje akcje, jeśli nastąpi zmiana lokalizacji.
      * Metoda wykonuje akcje, jeśli nastąpi zmiana lokalizacji.
      * @param location
      */
@@ -189,6 +196,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
+     * /brief Metoda wykona akcje, jeśli gdy przechwytywanie wskaźnika jest włączone lub wyłączone dla bieżącego okna.
      * Metoda wykona akcje, jeśli gdy przechwytywanie wskaźnika jest włączone lub wyłączone dla bieżącego okna.
      * @param hasCapture
      */

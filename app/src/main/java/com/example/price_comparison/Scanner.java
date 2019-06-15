@@ -46,6 +46,7 @@ public class Scanner extends AppCompatActivity {
     private EditText dialogEditText4;
 
     /**
+     * /brief Metoda uruchamiana przy starcie obecnego Acrivity.
      * Metoda uruchamiana przy starcie obecnego Acrivity.
      * @param savedInstanceState zapisany stan intencji
      */
@@ -59,6 +60,7 @@ public class Scanner extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             /**
+             * /brief Metoda wywoływana po kliknięciu w przycisk.
              * Metoda wywoływana po kliknięciu w przycisk.
              * @param view widok
              */
@@ -79,6 +81,7 @@ public class Scanner extends AppCompatActivity {
     //Update for List items
 
     /**
+     * /brief Metoda służąca do zaktualizowania listy.
      * Metoda służąca do zaktualizowania listy.
      */
     public void updateListItems(){
@@ -107,6 +110,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda tworzy okno dialogowe ze szczegółami produktu.
      * Metoda tworzy okno dialogowe ze szczegółami produktu.
      * @param barCode zeskanowany kod produktu
      * @param index index
@@ -144,6 +148,7 @@ public class Scanner extends AppCompatActivity {
         //Listener for background click/touch. When clicked background, flag isShowingDialog take false
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             /**
+             * /brief Metoda wywoływana podczas zamykania okna dialogowego.
              * Metoda wywoływana podczas zamykania okna dialogowego.
              * @param dialog okno dialogowe
              */
@@ -157,6 +162,7 @@ public class Scanner extends AppCompatActivity {
         //Listener for Done button
         btnDone.setOnClickListener(new View.OnClickListener() {
             /**
+             * /brief Metoda wywoływana po kliknięciu.
              * Metoda wywoływana po kliknięciu.
              * @param v widok
              */
@@ -173,6 +179,7 @@ public class Scanner extends AppCompatActivity {
         Button btnDelete= dialog.findViewById(R.id.btdelete);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             /**
+             * /brief Metoda wywoływana po kliknięciu.
              * Metoda wywoływana po kliknięciu.
              * @param v widok
              */
@@ -190,6 +197,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda wywoływana po wyjściu z danego okna.
      * Metoda wywoływana po wyjściu z danego okna.
      */
     @Override
@@ -203,6 +211,7 @@ public class Scanner extends AppCompatActivity {
     //Saves screen before rotate
 
     /**
+     * /brief Metoda zapisuje dane z ekranu, kiedy ma zostać obrócony.
      * Metoda zapisuje dane z ekranu, kiedy ma zostać obrócony.
      * @param outState aktualny stan
      */
@@ -224,6 +233,7 @@ public class Scanner extends AppCompatActivity {
     //Reload screen after rotate
 
     /**
+     * /brief Metoda odświeża ekran po obróceniu.
      * Metoda odświeża ekran po obróceniu.
      * @param savedInstanceState zapisany ostatni stan
      */
@@ -243,6 +253,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda wywołuje uruchomienie skanera.
      * Metoda wywołuje uruchomienie skanera.
      * @param view widok
      */
@@ -257,6 +268,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda uruchamiana po zeskanowaniu kodu kreskowego.
      * Metoda uruchamiana po zeskanowaniu kodu kreskowego.
      * @param RequestCode kod żądania
      * @param ResultCode kod wynikowy
@@ -290,6 +302,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda dodaje opcje do menu, jeśli są potrzebne.
      * Metoda dodaje opcje do menu, jeśli są potrzebne.
      * @param menu menu
      * @return
@@ -302,6 +315,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda wywoływana, jeśli opcje zostaną zasnaczone.
      * Metoda wywoływana, jeśli opcje zostaną zasnaczone.
      * @param item atrybut menu
      * @return

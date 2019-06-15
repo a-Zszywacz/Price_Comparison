@@ -29,6 +29,7 @@ public class UserMode extends AppCompatActivity {
 
     ApiController api = new ApiController(); /**< Obiekt kontrolera bazy danych */
     /**
+     * /brief Metoda uruchamiana przy starcie obecnego Acrivity.
      * Metoda uruchamiana przy starcie obecnego Acrivity.
      * @param savedInstanceState zapisany stan instancji
      */
@@ -47,6 +48,7 @@ public class UserMode extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             /**
+             * /brief Metoda wywoływana po kliknięciu w przycisk służący do uruchomienia skanera.
              * Metoda wywoływana po kliknięciu w przycisk służący do uruchomienia skanera.
              * @param v widok
              */
@@ -61,6 +63,7 @@ public class UserMode extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda wywołuje uruchomienie skanera.
      * Metoda wywołuje uruchomienie skanera.
      * @param view widok
      */
@@ -76,6 +79,7 @@ public class UserMode extends AppCompatActivity {
     }
 
     /**
+     * /brief Metoda wywoływana po zeskanowaniu kody kreskowego.
      * Metoda wywoływana po zeskanowaniu kody kreskowego.
      * @param RequestCode kod żądania
      * @param ResultCode kod wynikowy

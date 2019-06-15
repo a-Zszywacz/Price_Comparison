@@ -13,7 +13,7 @@ public class Product implements Parcelable {
     private String storeName; /**< Nazwa sklepu, w którym znajduje się produkt */
 
     /** \brief Konstruktor parametryczny tworzący produkt na podstawie kodu, nazwy, ceny, nazwy sklepu.
-     *
+     * Konstruktor parametryczny tworzący produkt na podstawie kodu, nazwy, ceny, nazwy sklepu.
      * @param code Kod produktu
      * @param name Nazwa produktu
      * @param price Cena produktu
