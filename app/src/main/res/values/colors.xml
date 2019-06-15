@@ -6,4 +6,7 @@
     <color name="colorSecondary">#053D6D</color>
     <color name="colorBlackText">#4E4E4E</color>
     <color name="colorWhiteText">#FFFFFF</color>
+
+    <color name="upperofscanned">#E6F1F9FF</color>
+    <color name="scanned_panel_background">#F1F9FF</color>
 </resources>

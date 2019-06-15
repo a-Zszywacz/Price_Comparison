@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -67,6 +69,9 @@
             android:stateNotNeeded="true"
             android:theme="@style/AppTheme.NoActionBar"
             tools:replace="android:screenOrientation" />
+        <activity
+            android:name=".GPSTrackerActivity"
+            android:stateNotNeeded="true"/>
     </application>
 
 </manifest>

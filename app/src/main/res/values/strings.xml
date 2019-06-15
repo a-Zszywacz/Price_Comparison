@@ -32,6 +32,10 @@
 
     <!--Scanned Product-->
     <string name="scanned_product_toolbar">Skanuj produkty</string>
+    <string name="contentDescription_add_to_cart">Add to cart</string>
+    <string name="scanned_product">Produkt</string>
+    <string name="scanned_product_background">Tło</string>
+    <string name="scanned_product_panel1_title">Najtaniej w:</string>
 
 
 </resources>

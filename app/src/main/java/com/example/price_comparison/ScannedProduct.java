@@ -1,12 +1,53 @@
 package com.example.price_comparison;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 
-public class ScannedProduct extends AppCompatActivity {
+import com.example.price_comparison.api.ApiController;
+import com.example.price_comparison.api.Product;
+import com.example.price_comparison.customlist.SingleStore;
+import com.example.price_comparison.customlist.StoreList;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ScannedProduct extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+
+
+    ApiController api = new ApiController();
+
+    ArrayList<SingleStore> dataList;
+    ListView listView;
+    private static StoreList storeList;
+
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLocation;
+    private LocationManager mLocationManager;
+    private LocationRequest mLocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +62,101 @@ public class ScannedProduct extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //===========================================================
+        //Lista Sklepów z produktem
+        listView=(ListView)findViewById(R.id.scanned_listview);
+        dataList = new ArrayList<>();
+        dataList.add(new SingleStore("dsdsf", 4343.43));
+        dataList.add(new SingleStore("dsdsf", 4343.43));
+        dataList.add(new SingleStore("dsdsf", 4343.43));
+        dataList.add(new SingleStore("dsdsf", 4343.43));
+        dataList.add(new SingleStore("dsdsf", 4343.43));
+
+        storeList = new StoreList(dataList, getApplicationContext());
+        listView.setAdapter(storeList);
+        //============================================================
+        //GPS - nie dziala
+        //Intent intent = new Intent(this, GPSTrackerActivity.class);
+        //startActivityForResult(intent,69);
+
+        //============================================================
+
+    }
+
+    public void goToMaps(View view){
+        // Create a Uri from an intent string. Use the result to create an Intent.
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=Szczecin" + " 71-270 " + "Klemensa Janickiego 24");
+
+// Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+// Make the Intent explicit by setting the Google Maps package
+        mapIntent.setPackage("com.google.android.apps.maps");
+
+// Attempt to start an activity that can handle the Intent
+        startActivity(mapIntent);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onActivityResult(int RequestCode, int ResultCode, Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(RequestCode, ResultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Log.d("Scanner", "Cancelled scan");
+                Toast.makeText(this, "Cancelled.", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("Scanner", "Scanned");
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
+                //showProductDetails() //TODO: usunac po testach
+
+                /*try {
+                    Product product = api.getProductByProducerCode(result.getContents());
+                    showProductDetails(product);
+
+
+                }catch (FileNotFoundException e){
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }*/
+
+            }
+
+            if(RequestCode == 69){
+                Bundle extras = data.getExtras();
+                Double longitude = extras.getDouble("Longitude");
+                Double latitude = extras.getDouble("Latitude");
+                Toast.makeText(this, "GEO: " + longitude+" "+latitude, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

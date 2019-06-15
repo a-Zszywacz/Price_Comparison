@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.price_comparison.api.ApiController;
 import com.example.price_comparison.api.Product;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -22,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class UserMode extends AppCompatActivity {
+
+    ApiController api = new ApiController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,18 +70,17 @@ public class UserMode extends AppCompatActivity {
                 Log.d("Scanner", "Cancelled scan");
                 Toast.makeText(this, "Cancelled.", Toast.LENGTH_LONG).show();
             } else {
-                Log.d("Scanner", "Scanned");
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(this, ScannedProduct.class);
+                startActivity(intent);
 
                 /*try {
                     Product product = api.getProductByProducerCode(result.getContents());
-                    showProductDetails(product);
-
-
+                    Intent intent = new Intent(this, ScannedProduct.class);
+                    startActivity(intent);
                 }catch (FileNotFoundException e){
-                    TextView textView = findViewById(R.id.textView);
-                    textView.setText("Produkt nieznaleziony");
-                    textView.setVisibility(View.VISIBLE);
+                    Log.d("Scanner", "Nieznany produkt. Spróbuj ponownie");
+                    Toast.makeText(this, "Scanned: " + "Nieznany produkt. Spróbuj ponownie", Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
