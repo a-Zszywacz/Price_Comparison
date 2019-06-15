@@ -35,20 +35,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Klasa służąca do zarządzania zeskanowanym prouktem. Rozszerza klasę AppCompatActivity. Implementuje GoogleApiClient.
+ */
 public class ScannedProduct extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
 
-    ApiController api = new ApiController();
+    ApiController api = new ApiController(); /**< Obiekt kontrolera bazy danych OX*/
 
-    ArrayList<SingleStore> dataList;
-    ListView listView;
-    private static StoreList storeList;
+    ArrayList<SingleStore> dataList;  /**< Lista przechowująca dane */
+    ListView listView; /**< Obiekt klasy ListView */
+    private static StoreList storeList; /**< Lista przechowująca sklepy */
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLocation;
     private LocationManager mLocationManager;
     private LocationRequest mLocationRequest;
 
+    /**
+     * Metoda uruchamiana przy starcie obecnego Acrivity.
+     * @param savedInstanceState zapisany stan instancji
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +91,10 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
 
     }
 
+    /**
+     * Metoda, która powinna wyświetlić lokalizacje na mapie Google.
+     * @param view widok
+     */
     public void goToMaps(View view){
         // Create a Uri from an intent string. Use the result to create an Intent.
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=Szczecin" + " 71-270 " + "Klemensa Janickiego 24");
@@ -97,6 +108,12 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
         startActivity(mapIntent);
     }
 
+    /**
+     * Metoda uruchamiana na zakończenie obecnego activity.
+     * @param RequestCode kod żądania
+     * @param ResultCode kod wynikowy
+     * @param data dane
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onActivityResult(int RequestCode, int ResultCode, Intent data){
@@ -135,26 +152,46 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
         }
     }
 
+    /**
+     * Metoda wykonuje akcje, jeśli połączono.
+     * @param bundle
+     */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
     }
 
+    /**
+     * Metoda wykonuje akcje, jeśli połączenie zostało zawieszone,4.
+     * @param i
+     */
     @Override
     public void onConnectionSuspended(int i) {
 
     }
 
+    /**
+     * Metoda wykonuje akcje, jeśli próba połączenia się nie powiedzie.
+     * @param connectionResult
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
+    /**
+     * Metoda wykonuje akcje, jeśli nastąpi zmiana lokalizacji.
+     * @param location
+     */
     @Override
     public void onLocationChanged(Location location) {
 
     }
 
+    /**
+     * Metoda wykona akcje, jeśli gdy przechwytywanie wskaźnika jest włączone lub wyłączone dla bieżącego okna.
+     * @param hasCapture
+     */
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 

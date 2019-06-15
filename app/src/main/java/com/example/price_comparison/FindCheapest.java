@@ -31,10 +31,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Klasa zarządza porównywarką cen.
+ */
 public class FindCheapest extends AppCompatActivity {
 
-    ApiController api = new ApiController();
-
+    ApiController api = new ApiController(); /**< Obiekt kontrolera bazy danych */
+    /**
+     * Metoda uruchamiana przy starcie obecnego activity.
+     * @param savedInstanceState zapisane stan instancji
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,10 @@ public class FindCheapest extends AppCompatActivity {
         Button button = findViewById(R.id.button4);
 
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metoda uruchamiana po kliknięciu w przycisk.
+             * @param v widok
+             */
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),
@@ -62,6 +72,10 @@ public class FindCheapest extends AppCompatActivity {
 
     }
 
+    /**
+     * Metoda uruchamia skaner.
+     * @param view widok
+     */
     public void scanBarcode(View view) {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
@@ -73,6 +87,12 @@ public class FindCheapest extends AppCompatActivity {
         integrator.initiateScan();
     }
 
+    /**
+     * Metoda uruchamiana po zeskanowaniu kodu kreskowego.
+     * @param RequestCode kod żądania
+     * @param ResultCode kod wynikowy
+     * @param data dane
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onActivityResult(int RequestCode, int ResultCode, Intent data){
@@ -104,6 +124,12 @@ public class FindCheapest extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metoda służąca do wyświetlenia szczegółów produktu.
+     * @param product paczka z produktem
+     * @throws IOException
+     * @throws JSONException
+     */
     private void showProductDetails(Product product) throws IOException, JSONException {
 
         TextView textView = findViewById(R.id.textView);
@@ -148,7 +174,13 @@ public class FindCheapest extends AppCompatActivity {
 
         arrayAdapter2 = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, text2){
 
-
+            /**
+             * Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+             * @param position pozycja
+             * @param convertView stary widok, który można ponownie użyć
+             * @param parent Rodyic, do którego ten widok zostanie dołączony
+             * @return widok
+             */
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);

@@ -23,17 +23,26 @@ import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * Klasa zaimplemmentowana jako kontroler bazy danych
+ */
 public class ApiController {
 
 
 
-    String saldo = "";
+    String saldo = ""; /**< ilość środków na koncie */
 
-    private String productUrl = "http://tymejczyk.home.pl/api_/store/index.php?What=Products";
-    private String storeUrl =   "http://tymejczyk.home.pl/api_/store/index.php?What=Store";
+    private String productUrl = "http://tymejczyk.home.pl/api_/store/index.php?What=Products"; /**< Adres produktu */
+    private String storeUrl =   "http://tymejczyk.home.pl/api_/store/index.php?What=Store"; /**< Adres sklepu */
 
+
+    /**
+     * Klasa służąca do pobierania danych z bazy danych
+     */
     public class GetDataSync extends AsyncTask<Void, Void, Void> {
-        @Override
+
+
+ @Override
         protected Void doInBackground(Void... params) {
             try {
                 getData();

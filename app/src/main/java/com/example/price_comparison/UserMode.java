@@ -22,10 +22,16 @@ import org.json.JSONException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Klasa zarządza widokiem, przeznaczonym dla użytkownika.
+ */
 public class UserMode extends AppCompatActivity {
 
-    ApiController api = new ApiController();
-
+    ApiController api = new ApiController(); /**< Obiekt kontrolera bazy danych */
+    /**
+     * Metoda uruchamiana przy starcie obecnego Acrivity.
+     * @param savedInstanceState zapisany stan instancji
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,10 @@ public class UserMode extends AppCompatActivity {
         ImageButton button = findViewById(R.id.usermode_btn1);
 
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metoda wywoływana po kliknięciu w przycisk służący do uruchomienia skanera.
+             * @param v widok
+             */
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),
@@ -50,6 +60,10 @@ public class UserMode extends AppCompatActivity {
         });
     }
 
+    /**
+     * Metoda wywołuje uruchomienie skanera.
+     * @param view widok
+     */
     public void scanBarcode(View view) {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
@@ -61,6 +75,12 @@ public class UserMode extends AppCompatActivity {
         integrator.initiateScan();
     }
 
+    /**
+     * Metoda wywoływana po zeskanowaniu kody kreskowego.
+     * @param RequestCode kod żądania
+     * @param ResultCode kod wynikowy
+     * @param data dane
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onActivityResult(int RequestCode, int ResultCode, Intent data){

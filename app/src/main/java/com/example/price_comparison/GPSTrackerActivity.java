@@ -9,13 +9,20 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+/**
+ * Klasa zarządza lokalizacją GPS.
+ */
 public class GPSTrackerActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    private GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient; /**< Obiekt GoogleApi */
+    Location mLastLocation; /**< Ostatnia uzyskana lokalizacja */
 
+    /**
+     * Metoda uruchamiana przy starcie obecnego activity.
+     * @param savedInstanceState zapisane stan instancji
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +36,26 @@ public class GPSTrackerActivity extends AppCompatActivity implements
         }
     }
 
+    /**
+     * Metoda łączy się z klientem Google Api.
+     */
     protected void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
     }
 
+    /**
+     * Metoda rozłącza się z klientem Google Api.
+     */
     protected void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
     }
 
+    /**
+     * Metoda wywoływana, jeśli zrealizowane zostało połączenie.
+     * @param bundle
+     */
     @Override
     public void onConnected(Bundle bundle) {
         try {
@@ -59,11 +76,19 @@ public class GPSTrackerActivity extends AppCompatActivity implements
 
     }
 
+    /**
+     * Metoda wywoływana, jeśli połączenie zostanie zawieszone.
+     * @param i
+     */
     @Override
     public void onConnectionSuspended(int i) {
 
     }
 
+    /**
+     * Metoda wywoływana, jeśli nie uda się połączyć.
+     * @param connectionResult
+     */
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
 

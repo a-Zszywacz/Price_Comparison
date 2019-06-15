@@ -26,6 +26,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 
+/**
+ * Klasa implementująca działanie skanera.
+ */
 public class Scanner extends AppCompatActivity {
 
     private ArrayList<String> resultCodes;
@@ -42,7 +45,10 @@ public class Scanner extends AppCompatActivity {
     private EditText dialogEditText3;
     private EditText dialogEditText4;
 
-
+    /**
+     * Metoda uruchamiana przy starcie obecnego Acrivity.
+     * @param savedInstanceState zapisany stan intencji
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,10 @@ public class Scanner extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metoda wywoływana po kliknięciu w przycisk.
+             * @param view widok
+             */
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),
@@ -67,6 +77,10 @@ public class Scanner extends AppCompatActivity {
 
 
     //Update for List items
+
+    /**
+     * Metoda służąca do zaktualizowania listy.
+     */
     public void updateListItems(){
         if( resultCodes == null){
             resultCodes = new ArrayList<>();
@@ -92,6 +106,11 @@ public class Scanner extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metoda tworzy okno dialogowe ze szczegółami produktu.
+     * @param barCode zeskanowany kod produktu
+     * @param index index
+     */
     @SuppressLint("SetTextI18n")
     public void createDialogForItem(String barCode, final int index){
         barCodee= barCode;
@@ -124,6 +143,10 @@ public class Scanner extends AppCompatActivity {
 
         //Listener for background click/touch. When clicked background, flag isShowingDialog take false
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            /**
+             * Metoda wywoływana podczas zamykania okna dialogowego.
+             * @param dialog okno dialogowe
+             */
             @Override
             public void onDismiss(DialogInterface dialog) {
                 isShowingDialog= false;
@@ -133,6 +156,10 @@ public class Scanner extends AppCompatActivity {
 
         //Listener for Done button
         btnDone.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metoda wywoływana po kliknięciu.
+             * @param v widok
+             */
             @Override
             public void onClick(View v) {
                 resultCodes.set(index, dialogEditText.getText().toString());
@@ -145,6 +172,10 @@ public class Scanner extends AppCompatActivity {
         //Listener for Delete button
         Button btnDelete= dialog.findViewById(R.id.btdelete);
         btnDelete.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metoda wywoływana po kliknięciu.
+             * @param v widok
+             */
             @Override
             public void onClick(View v) {
                 resultCodes.remove(index);
@@ -158,6 +189,9 @@ public class Scanner extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Metoda wywoływana po wyjściu z danego okna.
+     */
     @Override
     protected void onPause() {
         if (dialog != null && dialog.isShowing()) {
@@ -167,6 +201,11 @@ public class Scanner extends AppCompatActivity {
     }
 
     //Saves screen before rotate
+
+    /**
+     * Metoda zapisuje dane z ekranu, kiedy ma zostać obrócony.
+     * @param outState aktualny stan
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putStringArrayList("resultCodes", resultCodes);
@@ -183,6 +222,11 @@ public class Scanner extends AppCompatActivity {
     }
 
     //Reload screen after rotate
+
+    /**
+     * Metoda odświeża ekran po obróceniu.
+     * @param savedInstanceState zapisany ostatni stan
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -198,6 +242,10 @@ public class Scanner extends AppCompatActivity {
         updateListItems();
     }
 
+    /**
+     * Metoda wywołuje uruchomienie skanera.
+     * @param view widok
+     */
     public void scanBarcode(View view) {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
@@ -208,6 +256,12 @@ public class Scanner extends AppCompatActivity {
         integrator.initiateScan();
     }
 
+    /**
+     * Metoda uruchamiana po zeskanowaniu kodu kreskowego.
+     * @param RequestCode kod żądania
+     * @param ResultCode kod wynikowy
+     * @param data dane
+     */
     @Override
     public void onActivityResult(int RequestCode, int ResultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(RequestCode, ResultCode, data);
@@ -235,6 +289,11 @@ public class Scanner extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metoda dodaje opcje do menu, jeśli są potrzebne.
+     * @param menu menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -242,6 +301,11 @@ public class Scanner extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Metoda wywoływana, jeśli opcje zostaną zasnaczone.
+     * @param item atrybut menu
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

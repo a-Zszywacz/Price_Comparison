@@ -26,6 +26,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 //import android.widget.Toolbar;
 
+/**
+ * Klasa służąca do zarządzania bazą danych z poziomu aplikacji.
+ */
 public class Database extends AppCompatActivity {
 
     private final String[] dropdownMenu = {"Produkty", "Sklepy"};
