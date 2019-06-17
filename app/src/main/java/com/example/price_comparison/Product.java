@@ -7,10 +7,10 @@ import android.os.Parcelable;
  */
 public class Product implements Parcelable {
 
-    private String code; /**< Kod produktu */
-    private String name; /**< Nszwa produktu */
-    private Double price; /**< Cena produktu */
-    private String storeName; /**< Nazwa sklepu, w którym znajduje się produkt */
+    private String code; /**< \brief Kod produktu */
+    private String name; /**< \brief Nazwa produktu */
+    private Double price; /**< \brief Cena produktu */
+    private String storeName; /**< \brief Nazwa sklepu, w którym znajduje się produkt */
 
     /** \brief Konstruktor parametryczny tworzący produkt na podstawie kodu, nazwy, ceny, nazwy sklepu.
      * Konstruktor parametryczny tworzący produkt na podstawie kodu, nazwy, ceny, nazwy sklepu.
@@ -77,6 +77,7 @@ public class Product implements Parcelable {
     }
 
     /**
+     * \brief  Interfejs, który generuje instancje klasy Parceable.
      * Interfejs, który musi zostać zaimplementowany i udostępniony jako publiczne pole CREATOR, które generuje instancje klasy Parcelable.
      */
     public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {

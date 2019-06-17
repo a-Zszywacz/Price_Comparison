@@ -12,7 +12,7 @@ import android.view.View;
  */
 public class SelectMode extends AppCompatActivity {
     /**
-     * /brief Metoda uruchamiana przy starcie obecnego activity.
+     * \brief Metoda uruchamiana przy starcie obecnego activity.
      * Metoda uruchamiana przy starcie obecnego activity.
      * @param savedInstanceState zapisane stan instancji
      */
@@ -23,7 +23,7 @@ public class SelectMode extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda uruchamia tryb "GOD" przeznaczony dla administratorów.
+     * \brief Metoda uruchamia tryb "GOD" przeznaczony dla administratorów.
      * Metoda uruchamia tryb "GOD" przeznaczony dla administratorów.
      * @param view widok
      */
@@ -33,7 +33,7 @@ public class SelectMode extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda uruchamia tryb "USER" przeznaczony dla użytkownika.
+     * \brief Metoda uruchamia tryb "USER" przeznaczony dla użytkownika.
      * Metoda uruchamia tryb "USER" przeznaczony dla użytkownika.
      * @param view widok
      */

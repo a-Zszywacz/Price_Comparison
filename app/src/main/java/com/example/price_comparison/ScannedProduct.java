@@ -41,11 +41,11 @@ import java.util.List;
 public class ScannedProduct extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
 
-    ApiController api = new ApiController(); /**< Obiekt kontrolera bazy danych OX*/
+    ApiController api = new ApiController(); /**< \brief Obiekt kontrolera bazy danych OX*/
 
-    ArrayList<SingleStore> dataList;  /**< Lista przechowująca dane */
-    ListView listView; /**< Obiekt klasy ListView */
-    private static StoreList storeList; /**< Lista przechowująca sklepy */
+    ArrayList<SingleStore> dataList;  /**< \brief Lista przechowująca dane */
+    ListView listView; /**< \brief Obiekt klasy ListView */
+    private static StoreList storeList; /**< \brief Lista przechowująca sklepy */
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLocation;
@@ -53,7 +53,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     private LocationRequest mLocationRequest;
 
     /**
-     * /brief Metoda uruchamiana przy starcie obecnego Acrivity.
+     * \brief Metoda uruchamiana przy starcie obecnego Acrivity.
      * Metoda uruchamiana przy starcie obecnego Acrivity.
      * @param savedInstanceState zapisany stan instancji
      */
@@ -93,7 +93,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda, która powinna wyświetlić lokalizacje na mapie Google.
+     * \brief Metoda, która powinna wyświetlić lokalizacje na mapie Google.
      * Metoda, która powinna wyświetlić lokalizacje na mapie Google.
      * @param view widok
      */
@@ -111,7 +111,7 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda uruchamiana na zakończenie obecnego activity.
+     * \brief Metoda uruchamiana na zakończenie obecnego activity.
      * Metoda uruchamiana na zakończenie obecnego activity.
      * @param RequestCode kod żądania
      * @param ResultCode kod wynikowy
@@ -156,9 +156,9 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda wykonuje akcje, jeśli połączono.
+     * \brief Metoda wykonuje akcje, jeśli połączono.
      * Metoda wykonuje akcje, jeśli połączono.
-     * @param bundle
+     * @param bundle pakiet
      */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -166,9 +166,9 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda wykonuje akcje, jeśli połączenie zostało zawieszone.
+     * \brief Metoda wykonuje akcje, jeśli połączenie zostało zawieszone.
      * Metoda wykonuje akcje, jeśli połączenie zostało zawieszone.
-     * @param i
+     * @param i liczba
      */
     @Override
     public void onConnectionSuspended(int i) {
@@ -176,9 +176,9 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda wykonuje akcje, jeśli próba połączenia się nie powiedzie.
+     * \brief Metoda wykonuje akcje, jeśli próba połączenia się nie powiedzie.
      * Metoda wykonuje akcje, jeśli próba połączenia się nie powiedzie.
-     * @param connectionResult
+     * @param connectionResult rezultat połączenia
      */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -186,9 +186,9 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda wykonuje akcje, jeśli nastąpi zmiana lokalizacji.
+     * \brief Metoda wykonuje akcje, jeśli nastąpi zmiana lokalizacji.
      * Metoda wykonuje akcje, jeśli nastąpi zmiana lokalizacji.
-     * @param location
+     * @param location lokalizacja
      */
     @Override
     public void onLocationChanged(Location location) {
@@ -196,9 +196,9 @@ public class ScannedProduct extends AppCompatActivity implements GoogleApiClient
     }
 
     /**
-     * /brief Metoda wykona akcje, jeśli gdy przechwytywanie wskaźnika jest włączone lub wyłączone dla bieżącego okna.
+     * \brief Metoda wykona akcje, jeśli gdy przechwytywanie wskaźnika jest włączone lub wyłączone dla bieżącego okna.
      * Metoda wykona akcje, jeśli gdy przechwytywanie wskaźnika jest włączone lub wyłączone dla bieżącego okna.
-     * @param hasCapture
+     * @param hasCapture czy kod został pobrany
      */
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class StoreList extends ArrayAdapter<SingleStore> {
 
-    private ArrayList<SingleStore> dataSet; /**< Lista  danych*/
-    Context mContext; /**< Kontekst */
+    private ArrayList<SingleStore> dataSet; /**< \brief Lista  danych*/
+    Context mContext; /**< \brief Kontekst */
 
     /**
      * Klasa stworzona w celu podtrzymania widoku.
@@ -34,7 +34,7 @@ public class StoreList extends ArrayAdapter<SingleStore> {
     }
 
     /**
-     * /brief Konstruktor parametryczny, tworzący listę sklepów na podstawie danych, oraz kontekstu.
+     * \brief Konstruktor parametryczny, tworzący listę sklepów na podstawie danych, oraz kontekstu.
      * Konstruktor parametryczny, tworzący listę sklepów na podstawie danych, oraz kontekstu.
      * @param data dane
      * @param context kontekst
@@ -48,8 +48,8 @@ public class StoreList extends ArrayAdapter<SingleStore> {
     /**
      * Metoda zwracająca widok, na którym wyświetlone zostaną informacje takie jak nazwa, cena, info.
      * @param position pozycja
-     * @param convertView
-     * @param parent
+     * @param convertView konwertowany widok
+     * @param parent rodzic
      * @return
      */
     @Override

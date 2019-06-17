@@ -4,12 +4,12 @@ package com.example.price_comparison.api;
  * Klasa służąca do zarządzania produktami w bazie danych.
  */
 public class Product {
-    private int id;  /**< ID Produktu */
-    private String name;  /**< Nazwa produktu */
-    private String producerCode;  /**< Kod producenta */
+    private int id;  /**< \brief ID Produktu */
+    private String name;  /**< \brief Nazwa produktu */
+    private String producerCode;  /**< \brief Kod producenta */
 
     /**
-     * /brief Konstruktor parametryczny tworzący produkt na podstawie ID, nazwy, kodu producenta.
+     * \brief Konstruktor parametryczny tworzący produkt na podstawie ID, nazwy, kodu producenta.
      * Konstruktor parametryczny tworzący produkt na podstawie ID, nazwy, kodu producenta.
      * @param id ID Produktu
      * @param name Nazwa produktu
@@ -23,7 +23,7 @@ public class Product {
     }
 
     /**
-     * /brief Metoda typu GET. Zwraca ID Produktu.
+     * \brief Metoda typu GET. Zwraca ID Produktu.
      * Metoda typu GET. Zwraca ID Produktu.
      * @return ID Produktu.
      */
@@ -32,15 +32,15 @@ public class Product {
     }
 
     /**
-     * /brief Metoda typu SET. Ustawia ID produktu.
+     * \brief Metoda typu SET. Ustawia ID produktu.
      * Metoda typu SET. Ustawia ID produktu.
-     * @param id
+     * @param id ID produktu
      */
     public void setId(int id) {
         this.id = id;
     }
     /**
-     * /brief Metoda typu GET. Zwraca Nazwe Produktu.
+     * \brief Metoda typu GET. Zwraca Nazwe Produktu.
      * Metoda typu GET. Zwraca Nazwe Produktu.
      * @return Nazwa Produktu.
      */
@@ -49,15 +49,15 @@ public class Product {
     }
 
     /**
-     * /brief Metoda typu SET. Ustawia nazwe produktu.
+     * \brief Metoda typu SET. Ustawia nazwe produktu.
      * Metoda typu SET. Ustawia nazwe produktu.
-     * @param name
+     * @param name nazwa produktu
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
-     * /brief Metoda typu GET. Zwraca Kod producenta produktu.
+     * \brief Metoda typu GET. Zwraca Kod producenta produktu.
      * Metoda typu GET. Zwraca Kod producenta produktu.
      * @return Kod producenta Produktu.
      */
@@ -66,9 +66,9 @@ public class Product {
     }
 
     /**
-     * /brief Metoda typu SET. Ustawia kod producenta produktu.
+     * \brief Metoda typu SET. Ustawia kod producenta produktu.
      * Metoda typu SET. Ustawia kod producenta produktu.
-     * @param producerCode
+     * @param producerCode kod producenta produktu
      */
     public void setProducerCode(String producerCode) {
         this.producerCode = producerCode;

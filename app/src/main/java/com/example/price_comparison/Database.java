@@ -39,7 +39,7 @@ public class Database extends AppCompatActivity {
     private Spinner dropdown; /**< Służy do zarządzania listą rozwijaną */
 
     /**
-     * /brief Metoda uruchamiana przy starcie obecnego activity.
+     * \brief Metoda uruchamiana przy starcie obecnego activity.
      * Metoda uruchamiana przy starcie obecnego activity.
      * @param savedInstanceState zapisane stan instancji
      */
@@ -65,7 +65,7 @@ public class Database extends AppCompatActivity {
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             /**
-             * /brief Metoda uruchamiana przy starcie obecnego activity.
+             * \brief Metoda uruchamiana przy starcie obecnego activity.
              * Metoda uruchamiana przy starcie obecnego activity.
              * @param parent rodzic
              * @param view widok
@@ -78,9 +78,9 @@ public class Database extends AppCompatActivity {
             }
 
             /**
-             * /brief Metoda uruchamiana, jeśli nie został wybrany żaden atrybut
+             * \brief Metoda uruchamiana, jeśli nie został wybrany żaden atrybut
              * Metoda uruchamiana, jeśli nie został wybrany żaden atrybut
-             * @param parent
+             * @param parent rodzic
              */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -93,7 +93,7 @@ public class Database extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda rozwija listę wybranego atrybutu.
+     * \brief Metoda rozwija listę wybranego atrybutu.
      * Metoda rozwija listę wybranego atrybutu.
      * @param position pozycja
      */
@@ -122,7 +122,7 @@ public class Database extends AppCompatActivity {
                 arrayAdapter2 = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, text2){
 
                     /**
-                     * /brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+                     * \brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
                      * Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
                      * @param position pozycja
                      * @param convertView stary widok, który można ponownie użyć
@@ -166,7 +166,7 @@ public class Database extends AppCompatActivity {
                 arrayAdapter2 = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, text2){
 
                     /**
-                     * /brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
+                     * \brief Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
                      * Uzyskuje widok, który wyświetla dane w określonej pozycji w zestawie danych.
                      * @param position pozycja
                      * @param convertView stary widok, który można ponownie użyć

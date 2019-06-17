@@ -11,7 +11,7 @@ import android.view.View;
  */
 public class GodMode extends AppCompatActivity {
     /**
-     * /brief Metoda uruchamiana przy starcie obecnego activity.
+     * \brief Metoda uruchamiana przy starcie obecnego activity.
      * Metoda uruchamiana przy starcie obecnego activity.
      * @param savedInstanceState zapisane stan instancji
      */
@@ -24,7 +24,7 @@ public class GodMode extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda przekierowuje do skanera.
+     * \brief Metoda przekierowuje do skanera.
      * Metoda przekierowuje do skanera.
      * @param view widok
      */
@@ -35,7 +35,7 @@ public class GodMode extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda przekierowuje do bazy danych.
+     * \brief Metoda przekierowuje do bazy danych.
      * Metoda przekierowuje do bazy danych.
      * @param view widok
      */
@@ -46,7 +46,7 @@ public class GodMode extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda przekierowuje do porównywarki cen.
+     * \brief Metoda przekierowuje do porównywarki cen.
      * Metoda przekierowuje do porównywarki cen.
      * @param view widok
      */

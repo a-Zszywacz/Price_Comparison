@@ -4,11 +4,11 @@ package com.example.price_comparison.api;
  * Klasa służąca do zarządzania sklepami w bazie danych.
  */
 public class Store {
-    private int id; /**< ID sklepu */
-    private String storeName; /**< Nazwa sklepu */
+    private int id; /**< \brief ID sklepu */
+    private String storeName; /**< \brief Nazwa sklepu */
 
     /**
-     * /brief Konstruktor parametryczny, tworzący sklep na podstawie ID, oraz nazwy.
+     * \brief Konstruktor parametryczny, tworzący sklep na podstawie ID, oraz nazwy.
      * Konstruktor parametryczny, tworzący sklep na podstawie ID, oraz nazwy.
      * @param id ID sklepu
      * @param storeName Nazwa sklepu

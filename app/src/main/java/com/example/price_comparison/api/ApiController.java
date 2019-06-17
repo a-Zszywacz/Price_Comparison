@@ -30,10 +30,10 @@ public class ApiController {
 
 
 
-    String saldo = ""; /**< ilość środków na koncie */
+    String saldo = ""; /**< \brief ilość środków na koncie */
 
-    private String productUrl = "http://tymejczyk.home.pl/api_/store/index.php?What=Products"; /**< Adres produktu */
-    private String storeUrl =   "http://tymejczyk.home.pl/api_/store/index.php?What=Store"; /**< Adres sklepu */
+    private String productUrl = "http://tymejczyk.home.pl/api_/store/index.php?What=Products"; /**< \brief Adres produktu */
+    private String storeUrl =   "http://tymejczyk.home.pl/api_/store/index.php?What=Store"; /**< \brief Adres sklepu */
 
 
     /**
@@ -60,6 +60,13 @@ public class ApiController {
 
     }
 
+    /**
+     * \brief Metoda służąca do odczytu wszystkich pozycji z bazy.
+     * Metoda służąca do odczytu wszystkich pozycji z bazy.
+     * @param rd reader
+     * @return łańcuch
+     * @throws IOException Wyjątek związany z odczytem danych
+     */
     private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -73,8 +80,8 @@ public class ApiController {
      * Metoda służąca do odczytu JSON z adresu URL.
      * @param url adres URL
      * @return JSON
-     * @throws IOException
-     * @throws JSONException
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public JSONArray readJsonFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
@@ -92,8 +99,8 @@ public class ApiController {
      * Metoda służąca do odczytu obiektu JSON z adresu URL.
      * @param url adres URL
      * @return JSON
-     * @throws IOException
-     * @throws JSONException
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public JSONObject readJsonObjectFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
@@ -108,11 +115,11 @@ public class ApiController {
     }
 
     /**
-     * /brief Metoda typu GET. Zwraca listę wszystkich produktów.
+     * \brief Metoda typu GET. Zwraca listę wszystkich produktów.
      * Metoda typu GET. Zwraca listę wszystkich produktów. Zwracane pola: Id, Nazwa, Kod producenta.
      * @return lista wszystkich produktów
-     * @throws IOException
-     * @throws JSONException
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public ArrayList<Product> getAllProducts() throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.productUrl+"&GetAllProducts");
@@ -129,11 +136,11 @@ public class ApiController {
     }
 
     /**
-     * /brief Metoda typu GET. Zwraca listę wszystkich sklepów.
+     * \brief Metoda typu GET. Zwraca listę wszystkich sklepów.
      * Metoda typu GET. Zwraca listę wszystkich sklepów. Zwracane pola: Id, nazwa sklepu, miasto, kod pocztowy, ulica.
      * @return lista wszystkich sklepów
-     * @throws IOException
-     * @throws JSONException
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public ArrayList<ConcreteStore> getAllStores() throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.storeUrl+"&GetAllStores");
@@ -155,12 +162,12 @@ public class ApiController {
     }
 
     /**
-     * /brief Metoda zwraca produkt na podstawie kodu producenta.
+     * \brief Metoda zwraca produkt na podstawie kodu producenta.
      * Metoda zwraca produkt na podstawie kodu producenta. Zwracane pola: Id, nazwa, kod producenta
      * @param producerCode Kod producenta
      * @return Produkt
-     * @throws IOException
-     * @throws JSONException
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public  Product getProductByProducerCode(String producerCode) throws IOException, JSONException {
         JSONObject jsonObj = this.readJsonObjectFromUrl(this.productUrl+"&ProductByProducerCode="+producerCode);
@@ -170,12 +177,12 @@ public class ApiController {
     }
 
     /**
-     * /brief Metoda na podstawie kodu producenta zwraca sklep, w którym znajduje się produkt.
+     * \brief Metoda na podstawie kodu producenta zwraca sklep, w którym znajduje się produkt.
      * Metoda na podstawie kodu producenta zwraca sklep, w którym znajduje się produkt. Zwracane pola: id, nazwa sklepu, miasto, kod pocztowy, ulica.
-     * @param producerCode
+     * @param producerCode kod producenta
      * @return Sklep
-     * @throws IOException
-     * @throws JSONException
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public ArrayList<ConcreteStore> getStoresByProducerCode(String producerCode) throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.storeUrl+"&StoreByProducerCode="+producerCode);
@@ -200,12 +207,12 @@ public class ApiController {
     }
 
     /**
-     * /brief Metoda zwraca produkt w danym sklepie, na podstawie ID sklepu.
+     * \brief Metoda zwraca produkt w danym sklepie, na podstawie ID sklepu.
      * Metoda zwraca produkt w danym sklepie, na podstawie ID sklepu. Zwracane pola: Id, nazwa produktu, kod producenta, waluta, cena, data promocji od, data promocji do.
-     * @param id
-     * @return
-     * @throws IOException
-     * @throws JSONException
+     * @param id ID sklepu
+     * @return produkty
+     * @throws IOException Wyjątek związany z odczytem danych
+     * @throws JSONException Wyjątek związany z plikiem JSON
      */
     public ArrayList<ProductInStore> getConreteProductsByStoreID(int id) throws IOException, JSONException {
         JSONArray json = this.readJsonFromUrl(this.productUrl+"&GetProductsByStoreID="+Integer.toString(id));

@@ -4,12 +4,12 @@ package com.example.price_comparison.api;
  * Klasa służąca do zarządzania lokalizacją sklepu w bazie danych.
  */
 public class ConcreteStore extends Store {
-    private String city; /**< Miasto */
-    private String postCode; /**< Kod pocztowy */
-    private String street; /**< Ulica  */
+    private String city; /**< \brief Miasto */
+    private String postCode; /**< \brief Kod pocztowy */
+    private String street; /**< \brief Ulica  */
 
     /**
-     * /brief Konstruktor parametryczny tworzący lokalizację sklepu na podstawie ID, Nazwy, Miasta, Kodu pocztowego, Ulicy.
+     * \brief Konstruktor parametryczny tworzący lokalizację sklepu na podstawie ID, Nazwy, Miasta, Kodu pocztowego, Ulicy.
      * Konstruktor parametryczny tworzący lokalizację sklepu na podstawie ID, Nazwy, Miasta, Kodu pocztowego, Ulicy.
      * @param id ID sklepu
      * @param name Nazwa Sklepu
@@ -26,7 +26,7 @@ public class ConcreteStore extends Store {
     }
 
     /**
-     * /brief Metoda typu GET. Zwraca miasto, w którym znajduje się sklep.
+     * \brief Metoda typu GET. Zwraca miasto, w którym znajduje się sklep.
      * Metoda typu GET. Zwraca miasto, w którym znajduje się sklep.
      * @return miasto
      */
@@ -35,7 +35,7 @@ public class ConcreteStore extends Store {
     }
 
     /**
-     * /brief Metoda typu GET. Zwraca kod pocztowy.
+     * \brief Metoda typu GET. Zwraca kod pocztowy.
      * Metoda typu GET. Zwraca kod pocztowy.
      * @return kod pocztowy
      */
@@ -44,7 +44,7 @@ public class ConcreteStore extends Store {
     }
 
     /**
-     * /brief Metoda typu GET. Zwraca ulicę na której znajduje się sklep.
+     * \brief Metoda typu GET. Zwraca ulicę na której znajduje się sklep.
      * Metoda typu GET. Zwraca ulicę na której znajduje się sklep.
      * @return ulica
      */
@@ -53,27 +53,27 @@ public class ConcreteStore extends Store {
     }
 
     /**
-     * /brief Metoda typu SET. Ustawia miasto dla danego sklepu.
+     * \brief Metoda typu SET. Ustawia miasto dla danego sklepu.
      * Metoda typu SET. Ustawia miasto dla danego sklepu.
-     * @param city
+     * @param city miasto
      */
     public void setCity(String city) {
         this.city = city;
     }
 
     /**
-     * /brief Metoda typu SET. Ustawia kod pocztowy dla danego sklepu.
+     * \brief Metoda typu SET. Ustawia kod pocztowy dla danego sklepu.
      * Metoda typu SET. Ustawia kod pocztowy dla danego sklepu.
-     * @param postCode
+     * @param postCode kod pocztowy
      */
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 
     /**
-     * /brief Metoda typu SET. Ustawia ulicę dla danego sklepu.
+     * \brief Metoda typu SET. Ustawia ulicę dla danego sklepu.
      * Metoda typu SET. Ustawia ulicę dla danego sklepu.
-     * @param street
+     * @param street ulica
      */
     public void setStreet(String street) {
         this.street = street;

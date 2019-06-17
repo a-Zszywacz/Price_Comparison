@@ -16,11 +16,11 @@ public class GPSTrackerActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    private GoogleApiClient mGoogleApiClient; /**< Obiekt GoogleApi */
-    Location mLastLocation; /**< Ostatnia uzyskana lokalizacja */
+    private GoogleApiClient mGoogleApiClient; /**< \brief Obiekt GoogleApi */
+    Location mLastLocation; /**< \brief Ostatnia uzyskana lokalizacja */
 
     /**
-     * /brief Metoda uruchamiana przy starcie obecnego activity.
+     * \brief Metoda uruchamiana przy starcie obecnego activity.
      * Metoda uruchamiana przy starcie obecnego activity.
      * @param savedInstanceState zapisane stan instancji
      */
@@ -38,7 +38,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
-     * /brief Metoda łączy się z klientem Google Api.
+     * \brief Metoda łączy się z klientem Google Api.
      * Metoda łączy się z klientem Google Api.
      */
     protected void onStart() {
@@ -47,7 +47,7 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
-     * /brief Metoda rozłącza się z klientem Google Api.
+     * \brief Metoda rozłącza się z klientem Google Api.
      * Metoda rozłącza się z klientem Google Api.
      */
     protected void onStop() {
@@ -56,9 +56,9 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
-     * /brief Metoda wywoływana, jeśli zrealizowane zostało połączenie.
+     * \brief Metoda wywoływana, jeśli zrealizowane zostało połączenie.
      * Metoda wywoływana, jeśli zrealizowane zostało połączenie.
-     * @param bundle
+     * @param bundle pakiet
      */
     @Override
     public void onConnected(Bundle bundle) {
@@ -81,9 +81,9 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
-     * /brief Metoda wywoływana, jeśli połączenie zostanie zawieszone.
+     * \brief Metoda wywoływana, jeśli połączenie zostanie zawieszone.
      * Metoda wywoływana, jeśli połączenie zostanie zawieszone.
-     * @param i
+     * @param i liczba
      */
     @Override
     public void onConnectionSuspended(int i) {
@@ -91,9 +91,9 @@ public class GPSTrackerActivity extends AppCompatActivity implements
     }
 
     /**
-     * /brief Metoda wywoływana, jeśli nie uda się połączyć.
+     * \brief Metoda wywoływana, jeśli nie uda się połączyć.
      * Metoda wywoływana, jeśli nie uda się połączyć.
-     * @param connectionResult
+     * @param connectionResult wynik połączenia
      */
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {

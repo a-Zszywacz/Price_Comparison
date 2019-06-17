@@ -7,14 +7,14 @@ import java.util.List;
  * Klasa służąca do zarządzania produktami w konkretnym sklepie.
  */
 public class ProductInStore extends Product {
-    private String currency; /**< Waluta */
-    private float price; /**< Cena produktu */
-    private String durationOfPromotionFrom; /**< Czas trwania promocji OD */
-    private String durationOfPromotionTo; /**< Czas trwania promocji DO */
+    private String currency; /**< \brief Waluta */
+    private float price; /**< \brief Cena produktu */
+    private String durationOfPromotionFrom; /**< \brief Czas trwania promocji OD */
+    private String durationOfPromotionTo; /**< \brief Czas trwania promocji DO */
 
-    private List<ConcreteStore> stores; /**< Lista sklepów */
+    private List<ConcreteStore> stores; /**< \brief Lista sklepów */
     /**
-     * /brief Konstruktor parametryczny tworzący produkt w sklepie na podstawie ID, nazwy, kodu, ilości, ceny, czasu promocji.
+     * \brief Konstruktor parametryczny tworzący produkt w sklepie na podstawie ID, nazwy, kodu, ilości, ceny, czasu promocji.
      * Konstruktor parametryczny tworzący produkt w sklepie na podstawie ID, nazwy, kodu, ilości, ceny, czasu promocji.
      * @param id ID produktu
      * @param name Nazwa produktu
@@ -22,7 +22,7 @@ public class ProductInStore extends Product {
      * @param currency  Waluta
      * @param price Cena produktu
      * @param durationOfPromotionFrom Czas trwania promocji OD
-     * @param durationOfPromotionTo Czas trwania promocji DP
+     * @param durationOfPromotionTo Czas trwania promocji DO
      */
     public ProductInStore(int id, String name, String producerCode, String currency, float price, String durationOfPromotionFrom, String durationOfPromotionTo)
     {
@@ -35,7 +35,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Pobiera listę sklepów.
+     * \brief Pobiera listę sklepów.
      * Pobiera listę sklepów.
      * @return lista sklepów
      */
@@ -44,7 +44,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Dodaje sklepy do listy sklepów.
+     * \brief Dodaje sklepy do listy sklepów.
      * Dodaje sklepy do listy sklepów.
      * @param stores lista sklepów
      */
@@ -53,7 +53,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Dodaje sklep do listy sklepów.
+     * \brief Dodaje sklep do listy sklepów.
      * Dodaje sklep do listy sklepów.
      * @param store sklep
      */
@@ -63,7 +63,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Pobiera cene produktu w danym sklepie.
+     * \brief Pobiera cene produktu w danym sklepie.
      * Pobiera cene produktu w danym sklepie.
      * @return cena produktu
      */
@@ -72,7 +72,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Pobiera walute produktu w danym sklepie.
+     * \brief Pobiera walute produktu w danym sklepie.
      * Pobiera walute produktu w danym sklepie.
      * @return waluta
      */
@@ -81,7 +81,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Pobiera czas rozpoczęcia promocji w danym sklepie.
+     * \brief Pobiera czas rozpoczęcia promocji w danym sklepie.
      * Pobiera czas rozpoczęcia promocji.
      * @return czas rozpoczęcia promocji
      */
@@ -90,7 +90,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Pobiera czas zakończenie promocji w danym sklepie.
+     * \brief Pobiera czas zakończenie promocji w danym sklepie.
      * Pobiera czas zakończenie promocji.
      * @return czas zakończenia promocji
      */
@@ -99,7 +99,7 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Ustawia walutę produktu w danym sklepie.
+     * \brief Ustawia walutę produktu w danym sklepie.
      * Ustawia walutę produktu w danym sklepie.
      * @param currency waluta
      */
@@ -108,27 +108,27 @@ public class ProductInStore extends Product {
     }
 
     /**
-     * /brief Ustawia czas rozpoczęcia promocji produktu w danym sklepie.
+     * \brief Ustawia czas rozpoczęcia promocji produktu w danym sklepie.
      * Ustawia czas rozpoczęcia promocji produktu w danym sklepie.
-     * @param durationOfPromotionFrom
+     * @param durationOfPromotionFrom czas rozpoczęcia promocji
      */
     public void setDurationOfPromotionFrom(String durationOfPromotionFrom) {
         this.durationOfPromotionFrom = durationOfPromotionFrom;
     }
 
     /**
-     * /brief Ustawia czas zakończenia promocji produktu w danym sklepie.
+     * \brief Ustawia czas zakończenia promocji produktu w danym sklepie.
      * Ustawia czas zakończenia promocji produktu w danym sklepie.
-     * @param durationOfPromotionTo
+     * @param durationOfPromotionTo czas zakończenia promocji
      */
     public void setDurationOfPromotionTo(String durationOfPromotionTo) {
         this.durationOfPromotionTo = durationOfPromotionTo;
     }
 
     /**
-     * /brief Ustawia cenę produktu w danym sklepie.
+     * \brief Ustawia cenę produktu w danym sklepie.
      * Ustawia cenę produktu w danym sklepie.
-     * @param price
+     * @param price cena
      */
     public void setPrice(float price) {
         this.price = price;

@@ -31,22 +31,22 @@ import java.util.ArrayList;
  */
 public class Scanner extends AppCompatActivity {
 
-    private ArrayList<String> resultCodes;
-    private ArrayAdapter<String> arrayAdapter;
-    boolean isShowingDialog = false; //Dialog box flag
-    ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<String> resultCodes;  /**< \brief tablica kodów wynikowych */
+    private ArrayAdapter<String> arrayAdapter; /**< \brief  adapter  */
+    boolean isShowingDialog = false;  /**< \brief Flaga okna dialogowego */
+    ArrayList<Product> products = new ArrayList<>(); /**< \brief lista produktów  */
 
     //DialogBox
-    private Dialog dialog;
-    private int listIndex;
-    private String barCodee;
-    private EditText dialogEditText;
-    private EditText dialogEditText2;
-    private EditText dialogEditText3;
-    private EditText dialogEditText4;
+    private Dialog dialog; /**< \brief obiekt okna dialogowego */
+    private int listIndex; /**< \brief indeks listy */
+    private String barCodee; /**< \brief zeskanowany kod */
+    private EditText dialogEditText; /**< \brief Pole Tekstowe wyświetlane w oknie dialogowym */
+    private EditText dialogEditText2; /**< \brief Pole Tekstowe wyświetlane w oknie dialogowym */
+    private EditText dialogEditText3; /**< \brief Pole Tekstowe wyświetlane w oknie dialogowym */
+    private EditText dialogEditText4; /**< \brief Pole Tekstowe wyświetlane w oknie dialogowym */
 
     /**
-     * /brief Metoda uruchamiana przy starcie obecnego Acrivity.
+     * \brief Metoda uruchamiana przy starcie obecnego Acrivity.
      * Metoda uruchamiana przy starcie obecnego Acrivity.
      * @param savedInstanceState zapisany stan intencji
      */
@@ -60,7 +60,7 @@ public class Scanner extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             /**
-             * /brief Metoda wywoływana po kliknięciu w przycisk.
+             * \brief Metoda wywoływana po kliknięciu w przycisk.
              * Metoda wywoływana po kliknięciu w przycisk.
              * @param view widok
              */
@@ -81,7 +81,7 @@ public class Scanner extends AppCompatActivity {
     //Update for List items
 
     /**
-     * /brief Metoda służąca do zaktualizowania listy.
+     * \brief Metoda służąca do zaktualizowania listy.
      * Metoda służąca do zaktualizowania listy.
      */
     public void updateListItems(){
@@ -110,7 +110,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda tworzy okno dialogowe ze szczegółami produktu.
+     * \brief Metoda tworzy okno dialogowe ze szczegółami produktu.
      * Metoda tworzy okno dialogowe ze szczegółami produktu.
      * @param barCode zeskanowany kod produktu
      * @param index index
@@ -148,7 +148,7 @@ public class Scanner extends AppCompatActivity {
         //Listener for background click/touch. When clicked background, flag isShowingDialog take false
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             /**
-             * /brief Metoda wywoływana podczas zamykania okna dialogowego.
+             * \brief Metoda wywoływana podczas zamykania okna dialogowego.
              * Metoda wywoływana podczas zamykania okna dialogowego.
              * @param dialog okno dialogowe
              */
@@ -162,7 +162,7 @@ public class Scanner extends AppCompatActivity {
         //Listener for Done button
         btnDone.setOnClickListener(new View.OnClickListener() {
             /**
-             * /brief Metoda wywoływana po kliknięciu.
+             * \brief Metoda wywoływana po kliknięciu.
              * Metoda wywoływana po kliknięciu.
              * @param v widok
              */
@@ -179,7 +179,7 @@ public class Scanner extends AppCompatActivity {
         Button btnDelete= dialog.findViewById(R.id.btdelete);
         btnDelete.setOnClickListener(new View.OnClickListener() {
             /**
-             * /brief Metoda wywoływana po kliknięciu.
+             * \brief Metoda wywoływana po kliknięciu.
              * Metoda wywoływana po kliknięciu.
              * @param v widok
              */
@@ -197,7 +197,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda wywoływana po wyjściu z danego okna.
+     * \brief Metoda wywoływana po wyjściu z danego okna.
      * Metoda wywoływana po wyjściu z danego okna.
      */
     @Override
@@ -211,7 +211,7 @@ public class Scanner extends AppCompatActivity {
     //Saves screen before rotate
 
     /**
-     * /brief Metoda zapisuje dane z ekranu, kiedy ma zostać obrócony.
+     * \brief Metoda zapisuje dane z ekranu, kiedy ma zostać obrócony.
      * Metoda zapisuje dane z ekranu, kiedy ma zostać obrócony.
      * @param outState aktualny stan
      */
@@ -233,7 +233,7 @@ public class Scanner extends AppCompatActivity {
     //Reload screen after rotate
 
     /**
-     * /brief Metoda odświeża ekran po obróceniu.
+     * \brief Metoda odświeża ekran po obróceniu.
      * Metoda odświeża ekran po obróceniu.
      * @param savedInstanceState zapisany ostatni stan
      */
@@ -253,7 +253,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda wywołuje uruchomienie skanera.
+     * \brief Metoda wywołuje uruchomienie skanera.
      * Metoda wywołuje uruchomienie skanera.
      * @param view widok
      */
@@ -268,7 +268,7 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda uruchamiana po zeskanowaniu kodu kreskowego.
+     * \brief Metoda uruchamiana po zeskanowaniu kodu kreskowego.
      * Metoda uruchamiana po zeskanowaniu kodu kreskowego.
      * @param RequestCode kod żądania
      * @param ResultCode kod wynikowy
@@ -302,10 +302,10 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda dodaje opcje do menu, jeśli są potrzebne.
+     * \brief Metoda dodaje opcje do menu, jeśli są potrzebne.
      * Metoda dodaje opcje do menu, jeśli są potrzebne.
      * @param menu menu
-     * @return
+     * @return prawda
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -315,10 +315,10 @@ public class Scanner extends AppCompatActivity {
     }
 
     /**
-     * /brief Metoda wywoływana, jeśli opcje zostaną zasnaczone.
+     * \brief Metoda wywoływana, jeśli opcje zostaną zasnaczone.
      * Metoda wywoływana, jeśli opcje zostaną zasnaczone.
      * @param item atrybut menu
-     * @return
+     * @return zaznaczone pola
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
