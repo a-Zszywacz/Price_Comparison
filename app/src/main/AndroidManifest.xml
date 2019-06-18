@@ -17,7 +17,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".ScannedProduct"
+        <activity android:name=".Cart"
+            android:label="@string/cart_toolbar_name"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation"
+            />
+        <activity
+            android:name=".ScannedProduct"
             android:label="@string/find_cheapest_toolbar_name"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
@@ -71,7 +78,7 @@
             tools:replace="android:screenOrientation" />
         <activity
             android:name=".GPSTrackerActivity"
-            android:stateNotNeeded="true"/>
+            android:stateNotNeeded="true" />
     </application>
 
 </manifest>

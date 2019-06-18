@@ -2,9 +2,9 @@ package com.example.price_comparison.customlist;
 
 public class SingleStore {
     String name;
-    Double price;
+    String price;
 
-    public SingleStore(String name, Double price) {
+    public SingleStore(String name, String price) {
         this.name = name;
         this.price = price;
     }
@@ -13,7 +13,7 @@ public class SingleStore {
         return name;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 }

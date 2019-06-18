@@ -37,5 +37,8 @@
     <string name="scanned_product_background">Tło</string>
     <string name="scanned_product_panel1_title">Najtaniej w:</string>
 
+    <!--Cart-->
+    <string name="cart_toolbar_name">Koszyk</string>
+
 
 </resources>

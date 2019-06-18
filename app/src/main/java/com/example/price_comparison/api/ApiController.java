@@ -160,8 +160,8 @@ public class ApiController {
                         jsonObj.getInt("id"),
                         jsonObj.getString("productName"),
                         jsonObj.getString("producerCode"),
-                        jsonObj.getString("currency"),
-                        Float.parseFloat(jsonObj.getString("price")),
+                        jsonObj.getString("price"),
+                        Float.parseFloat(jsonObj.getString("currency")),
                         jsonObj.getString("promotionFrom"),
                         jsonObj.getString("promotionTo")
                 );

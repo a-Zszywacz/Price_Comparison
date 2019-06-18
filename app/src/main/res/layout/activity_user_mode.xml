@@ -61,6 +61,7 @@
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:onClick="goToCart"
                 app:srcCompat="@drawable/user_shopping_cart" />
 
         </android.support.constraint.ConstraintLayout>

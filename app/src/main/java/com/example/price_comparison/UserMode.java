@@ -61,6 +61,12 @@ public class UserMode extends AppCompatActivity {
         integrator.initiateScan();
     }
 
+    public void goToCart(View view){
+        //Sprawdzić czy w Cart jest już jakiś produkt. Jesli nie to wyswietlic komunikat
+        Intent intent = new Intent(this, Cart.class);
+        startActivity(intent);
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onActivityResult(int RequestCode, int ResultCode, Intent data){
@@ -71,12 +77,12 @@ public class UserMode extends AppCompatActivity {
                 Toast.makeText(this, "Cancelled.", Toast.LENGTH_LONG).show();
             } else {
 
-                Intent intent = new Intent(this, ScannedProduct.class);
-                startActivity(intent);
-
-                /*try {
+                /*Intent intent = new Intent(this, ScannedProduct.class);
+                startActivity(intent);*/
+                try {
                     Product product = api.getProductByProducerCode(result.getContents());
                     Intent intent = new Intent(this, ScannedProduct.class);
+                    intent.putExtra("PRODUCT", product);
                     startActivity(intent);
                 }catch (FileNotFoundException e){
                     Log.d("Scanner", "Nieznany produkt. Spróbuj ponownie");
@@ -85,7 +91,7 @@ public class UserMode extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
 
             }
         }

@@ -68,7 +68,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/user_shopping_cart"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:onClick="goToCart"/>
 
         </RelativeLayout>
 
@@ -209,7 +210,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_background_selected"
+                android:background="@drawable/custom_background"
                 android:weightSum="10"
                 android:orientation="horizontal">
 
@@ -268,7 +269,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/custom_background_selected"
+                android:background="@drawable/custom_background"
                 android:weightSum="10"
                 android:orientation="horizontal">
 
@@ -369,6 +370,7 @@
 
 
             <ImageButton
+                android:onClick="addProductToList"
                 android:id="@+id/imageButton3"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
@@ -378,7 +380,7 @@
                 app:srcCompat="@drawable/add_to_cart_btn" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/scan_again_btn"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_weight="1"

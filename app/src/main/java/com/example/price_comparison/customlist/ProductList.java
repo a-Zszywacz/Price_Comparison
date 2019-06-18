@@ -2,25 +2,25 @@ package com.example.price_comparison.customlist;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.price_comparison.Cart;
 import com.example.price_comparison.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class StoreList extends ArrayAdapter<SingleStore> {
+public class ProductList extends ArrayAdapter<SingleProduct> {
 
-    private ArrayList<SingleStore> dataSet;
+    private ArrayList<SingleProduct> dataSet;
     Context mContext;
+
+    /*public void changeCursor(Cursor lista) {
+        super
+    }*/
 
 
     private static class ViewHolder {
@@ -29,7 +29,7 @@ public class StoreList extends ArrayAdapter<SingleStore> {
         ImageView info;
     }
 
-    public StoreList(ArrayList<SingleStore> data, Context context){
+    public ProductList(ArrayList<SingleProduct> data, Context context){
         super(context, R.layout.store_list, data);
         this.dataSet = data;
         this.mContext=context;
@@ -38,15 +38,15 @@ public class StoreList extends ArrayAdapter<SingleStore> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        SingleStore dataModel = getItem(position);
+        SingleProduct dataModel = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
-        ViewHolder viewHolder; // view lookup cache stored in tag
+        ProductList.ViewHolder viewHolder; // view lookup cache stored in tag
 
         final View result;
 
         if (convertView == null) {
 
-            viewHolder = new ViewHolder();
+            viewHolder = new ProductList.ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.store_list, parent, false);
             viewHolder.storeName = (TextView) convertView.findViewById(R.id.text1);
@@ -57,7 +57,7 @@ public class StoreList extends ArrayAdapter<SingleStore> {
 
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            viewHolder = (ProductList.ViewHolder) convertView.getTag();
             result=convertView;
         }
 
@@ -65,5 +65,4 @@ public class StoreList extends ArrayAdapter<SingleStore> {
         viewHolder.storePrice.setText(dataModel.getPrice().toString());
         return convertView;
     }
-
 }
